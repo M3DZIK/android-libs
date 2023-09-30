@@ -1,0 +1,27 @@
+[versions]
+# Android SDK
+android-sdk-min = "24"
+android-sdk-target = "34"
+android-sdk-compile = "34"
+# Libraries
+androidx-biometric = "1.2.0-alpha05"
+androidx-datastore = "1.1.0-alpha05"
+androidx-espresso-core = "3.5.1"
+androidx-junit = "1.1.5"
+coil-compose = "2.4.0"
+medzik-libcrypto = "1.1.0"
+# Plugins
+android-application = "8.1.1"
+jetbrains-kotlin-android = "1.9.10"
+
+[libraries]
+androidx-biometric-ktx = { module = "androidx.biometric:biometric-ktx", version.ref = "androidx-biometric" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso-core" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+medzik-libcrypto = { module = "dev.medzik:libcrypto", version.ref = "medzik-libcrypto" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-application" }
+android-library = { id = "com.android.library", version.ref = "android-application" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrains-kotlin-android" }

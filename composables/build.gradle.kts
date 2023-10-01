@@ -32,11 +32,12 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.material3)
+    compileOnly(libs.androidx.material3)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
+    debugImplementation(libs.androidx.material3)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

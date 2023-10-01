@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "LibrePass"
 include(":crypto")
+include(":composables")

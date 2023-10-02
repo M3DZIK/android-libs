@@ -33,11 +33,16 @@ android {
 
 dependencies {
     compileOnly(libs.androidx.material3)
+    compileOnly(libs.androidx.navigation.compose)
+
+    debugImplementation(libs.androidx.material3)
+    debugImplementation(libs.androidx.navigation.compose)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
-    debugImplementation(libs.androidx.material3)
+    testImplementation(libs.androidx.junit)
+
     debugImplementation(libs.androidx.ui.test.manifest)
 }

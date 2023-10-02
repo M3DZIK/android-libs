@@ -43,6 +43,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
     testImplementation(libs.androidx.junit)
+    testImplementation(libs.androidx.compose.runtime)
 
     debugImplementation(libs.androidx.ui.test.manifest)
 }

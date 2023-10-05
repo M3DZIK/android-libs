@@ -46,4 +46,6 @@ dependencies {
     testImplementation(libs.androidx.compose.runtime)
 
     debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.tooling.preview)
 }

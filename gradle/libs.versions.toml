@@ -29,6 +29,8 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-android" }
 medzik-libcrypto = { module = "dev.medzik:libcrypto", version.ref = "medzik-libcrypto" }
 

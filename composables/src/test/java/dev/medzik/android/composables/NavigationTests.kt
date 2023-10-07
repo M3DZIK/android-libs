@@ -1,4 +1,4 @@
-package dev.medzik.android.composables.navigation
+package dev.medzik.android.composables
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

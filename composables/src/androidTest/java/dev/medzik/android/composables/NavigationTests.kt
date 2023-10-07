@@ -1,4 +1,4 @@
-package dev.medzik.android.composables.navigation
+package dev.medzik.android.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button

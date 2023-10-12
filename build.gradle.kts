@@ -23,8 +23,8 @@ nexusPublishing {
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
 
-            username = providers.gradleProperty("ossrhUsername").get()
-            password = providers.gradleProperty("ossrhPassword").get()
+            username.set(providers.gradleProperty("ossrhUsername").orNull)
+            password.set(providers.gradleProperty("ossrhPassword").orNull)
 
             group = "dev.medzik.android"
         }

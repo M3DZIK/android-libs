@@ -1,5 +1,4 @@
 import org.gradle.api.Project
-import org.gradle.api.artifacts.repositories.PasswordCredentials
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.TaskProvider
@@ -68,19 +67,6 @@ fun Project.publishConfig(
                     from(components["release"])
                 }
             }
-        }
-
-        repositories {
-            maven {
-                name = "sonatypeStaging"
-                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-                credentials(PasswordCredentials::class)
-            }
-
-//            maven {
-//                name = "test"
-//                url = uri("/tmp/repo")
-//            }
         }
     }
 

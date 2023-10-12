@@ -1,4 +1,4 @@
-package dev.medzik.android.composables
+package dev.medzik.android.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button

@@ -1,4 +1,4 @@
-package dev.medzik.android.composables
+package dev.medzik.android.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf

@@ -1,4 +1,4 @@
-package dev.medzik.android.composables
+package dev.medzik.android.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

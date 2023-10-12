@@ -1,4 +1,4 @@
-package dev.medzik.android.composables
+package dev.medzik.android.components
 
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder

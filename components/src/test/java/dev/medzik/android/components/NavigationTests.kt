@@ -1,4 +1,4 @@
-package dev.medzik.android.composables
+package dev.medzik.android.components
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

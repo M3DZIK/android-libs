@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.medzik.android.composables"
+    namespace = "dev.medzik.android.components"
     compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     defaultConfig {
@@ -54,11 +54,11 @@ dependencies {
 
 afterEvaluate {
     publishConfig {
-        artifactId = "composables"
+        artifactId = "components"
 
         pom {
-            name.set("Composables Utilities")
-            description.set("Android Utilities for Application Development - Composables")
+            name.set("Components Utilities")
+            description.set("Android Utilities for Application Development - Components for Jetpack Compose")
         }
     }
 }

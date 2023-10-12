@@ -9,6 +9,11 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
+/** A keystore alias interface that represents an alias for keystore operations. */
+interface KeyStoreAlias {
+    val name: String
+}
+
 /** Android KeyStore utility class for encrypting and decrypting data. */
 object KeyStore {
     private const val AES_MODE = "AES/GCM/NoPadding"
@@ -19,9 +24,9 @@ object KeyStore {
      * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
      * @return initialized Cipher for encryption
      */
-    fun initForEncryption(alias: String, deviceAuthentication: Boolean): Cipher {
+    fun initForEncryption(alias: KeyStoreAlias, deviceAuthentication: Boolean): Cipher {
         val cipher = Cipher.getInstance(AES_MODE)
-        cipher.init(Cipher.ENCRYPT_MODE, getOrGenerateSecretKey(alias, deviceAuthentication))
+        cipher.init(Cipher.ENCRYPT_MODE, getOrGenerateSecretKey(alias.name, deviceAuthentication))
         return cipher
     }
 
@@ -31,11 +36,11 @@ object KeyStore {
      * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
      * @return initialized Cipher for decryption
      */
-    fun initForDecryption(initializationVector: ByteArray, alias: String, deviceAuthentication: Boolean): Cipher {
+    fun initForDecryption(initializationVector: ByteArray, alias: KeyStoreAlias, deviceAuthentication: Boolean): Cipher {
         val cipher = Cipher.getInstance(AES_MODE)
         cipher.init(
             Cipher.DECRYPT_MODE,
-            getOrGenerateSecretKey(alias, deviceAuthentication),
+            getOrGenerateSecretKey(alias.name, deviceAuthentication),
             GCMParameterSpec(128, initializationVector)
         )
         return cipher

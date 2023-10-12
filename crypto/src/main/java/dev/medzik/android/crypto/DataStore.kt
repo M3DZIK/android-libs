@@ -8,6 +8,7 @@ import dev.medzik.libcrypto.Hex
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
+/** Android DataStore utility class for storing data */
 object DataStore {
     /**
      * Reads the key from KeyStore.
@@ -41,7 +42,7 @@ object DataStore {
      * @param preferenceKey key to read from KeyStore
      * @return the decrypted value of the key
      */
-    suspend fun DataStore<Preferences>.readEncrypted(keyStoreAlias: String, preferenceKey: String): ByteArray? {
+    suspend fun DataStore<Preferences>.readEncrypted(keyStoreAlias: KeyStoreAlias, preferenceKey: String): ByteArray? {
         val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
 
         // read cipher text from datastore
@@ -66,7 +67,7 @@ object DataStore {
      * @param value value to encrypt and write
      * @return the value of the key
      */
-    suspend fun DataStore<Preferences>.writeEncrypted(keyStoreAlias: String, preferenceKey: String, value: ByteArray) {
+    suspend fun DataStore<Preferences>.writeEncrypted(keyStoreAlias: KeyStoreAlias, preferenceKey: String, value: ByteArray) {
         val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
 
         // encrypt value

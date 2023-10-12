@@ -20,6 +20,10 @@ private val Context.dataStore by preferencesDataStore(name = "crypto_datastore_t
 
 @RunWith(AndroidJUnit4::class)
 class DataStoreTests {
+    enum class KeyAlias : KeyStoreAlias {
+        TEST_DATASTORE_ENCRYPTED
+    }
+
     private val testKey = stringPreferencesKey("test_key")
 
     @Test
@@ -35,7 +39,6 @@ class DataStoreTests {
         assertEquals(null, context.dataStore.read(testKey))
     }
 
-    private val keyStoreAliasEnc = "test_datastore_enc"
     private val preferenceKeyEnc = "test_enc_key"
 
     @Test
@@ -44,10 +47,10 @@ class DataStoreTests {
 
         val context = InstrumentationRegistry.getInstrumentation().context
 
-        context.dataStore.writeEncrypted(keyStoreAliasEnc, preferenceKeyEnc, value.toByteArray())
-        assertEquals(value, String(context.dataStore.readEncrypted(keyStoreAliasEnc, preferenceKeyEnc)!!))
+        context.dataStore.writeEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc, value.toByteArray())
+        assertEquals(value, String(context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc)!!))
 
         context.dataStore.deleteEncrypted(preferenceKeyEnc)
-        assertEquals(null, context.dataStore.readEncrypted(keyStoreAliasEnc, preferenceKeyEnc))
+        assertEquals(null, context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc))
     }
 }

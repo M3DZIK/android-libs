@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LibrePass"
+rootProject.name = "Android Utilities Library"
 include(":crypto")
 include(":composables")
 include(":utils")

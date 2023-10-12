@@ -1,0 +1,91 @@
+import org.gradle.api.Project
+import org.gradle.api.artifacts.repositories.PasswordCredentials
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.TaskProvider
+import org.gradle.api.tasks.bundling.Jar
+import org.gradle.kotlin.dsl.*
+import org.gradle.plugins.signing.SigningExtension
+
+private fun Project.publishing(): PublishingExtension {
+    return extensions.getByType(PublishingExtension::class.java)
+}
+
+private fun Project.signing(): SigningExtension {
+    return extensions.getByType(SigningExtension::class.java)
+}
+
+fun Project.publishConfig(
+    configuration: MavenPublication.() -> Unit
+) {
+    project.apply {
+        plugin("maven-publish")
+        plugin("signing")
+        plugin("org.jetbrains.dokka")
+    }
+
+    project.publishing().apply {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                groupId = "dev.medzik.android"
+                version = "1.0.0"
+
+                configuration()
+
+                val dokkaHtml by project.tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+                val javadocJar: TaskProvider<Jar> by project.tasks.registering(Jar::class) {
+                    dependsOn(dokkaHtml)
+                    archiveClassifier.set("javadoc")
+                    from(dokkaHtml.outputDirectory)
+                }
+                artifact(javadocJar)
+
+                pom {
+                    url = "https://github.com/M3DZIK/android-utils"
+
+                    licenses {
+                        license {
+                            name.set("MIT")
+                            url.set("https://github.com/M3DZIK/android-utils/blob/main/LICENSE")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            name.set("M3DZIK")
+                            email.set("me@medzik.dev")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git@github.com:M3DZIK/android-utils.git")
+                        developerConnection.set("scm:git@github.com:M3DZIK/android-utils.git")
+                        url.set("scm:git@github.com:M3DZIK/android-utils.git")
+                    }
+                }
+
+                project.afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "sonatypeStaging"
+                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+                credentials(PasswordCredentials::class)
+            }
+
+//            maven {
+//                name = "test"
+//                url = uri("/tmp/repo")
+//            }
+        }
+    }
+
+    project.signing().apply {
+        sign(project.publishing().publications["mavenJava"])
+        useGpgCmd()
+    }
+}

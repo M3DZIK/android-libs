@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+//    alias(libs.plugins.jetbrains.dokka)
+
+    `maven-publish`
+    signing
 }
 
 android {
@@ -50,4 +54,15 @@ dependencies {
     // for preview support
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.tooling.preview)
+}
+
+afterEvaluate {
+    publishConfig {
+        artifactId = "composables"
+
+        pom {
+            name.set("Composables Utilities")
+            description.set("Android Utilities for Application Development - Composables")
+        }
+    }
 }

@@ -33,3 +33,15 @@ dependencies {
 //    androidTestImplementation(libs.androidx.junit)
 //    androidTestImplementation(libs.androidx.espresso.core)
 }
+
+
+afterEvaluate {
+    publishConfig {
+        artifactId = "utils"
+
+        pom {
+            name.set("Android Common Utilities")
+            description.set("Android Utilities for Application Development - Common")
+        }
+    }
+}

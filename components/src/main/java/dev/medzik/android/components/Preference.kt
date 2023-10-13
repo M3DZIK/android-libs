@@ -20,6 +20,20 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+/** A composable function with text with secondary text color. */
+@Composable
+fun SecondaryText(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = modifier
+    )
+}
+
 /**
  * A composable function to display a preference group title.
  *
@@ -31,11 +45,9 @@ fun PreferenceGroupTitle(
     title: String,
     modifier: Modifier = Modifier
 ) {
-    Text(
+    SecondaryText(
         text = title,
-        style = MaterialTheme.typography.labelLarge,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = modifier.padding(vertical = 8.dp)
+        modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp)
     )
 }
 
@@ -71,7 +83,7 @@ fun PreferenceEntry(
                 onClick = onClick
             )
             .alpha(if (isEnabled) 1f else 0.5f)
-            .padding(vertical = 16.dp)
+            .padding(vertical = 16.dp, horizontal = 16.dp)
     ) {
         if (icon != null) {
             Box(
@@ -191,9 +203,7 @@ fun PropertyPreference(
 @Composable
 fun PreferencesPreview() {
     Surface {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column {
             PreferenceGroupTitle(
                 title = "Group title"
             )

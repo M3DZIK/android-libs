@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
@@ -50,12 +52,14 @@ class BottomSheetState constructor(
 /**
  * A composable function for displaying a basic bottom sheet.
  * @param state the state that controls visibility of the bottom sheet
+ * @param navigationBarPadding determines whether the bottom sheet should have navigation bar padding
  * @param content the content of the bottom sheet to display
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BaseBottomSheet(
     state: BottomSheetState,
+    navigationBarPadding: Boolean = false,
     content: @Composable (ColumnScope.() -> Unit)
 ) {
     val scope = rememberCoroutineScope()
@@ -66,9 +70,16 @@ fun BaseBottomSheet(
             onDismissRequest = {
                 scope.launch { state.hide() }
             },
-            sheetState = state.sheetState,
-            content = content
-        )
+            sheetState = state.sheetState
+        ) {
+            content()
+
+            if (navigationBarPadding) {
+                Spacer(
+                    modifier = Modifier.navigationBarsPadding()
+                )
+            }
+        }
     }
 }
 
@@ -77,6 +88,7 @@ fun BaseBottomSheet(
  * @param state the state that controls visibility of the bottom sheet
  * @param items the list of items to display in the bottom sheet
  * @param onSelected a callback function invoked when the item is selected
+ * @param navigationBarPadding determines whether the bottom sheet should have navigation bar padding
  * @param content composable lambda that defines the visual representation of each item in the picker
  */
 @Composable
@@ -84,11 +96,15 @@ fun <T> PickerBottomSheet(
     state: BottomSheetState,
     items: List<T>,
     onSelected: (T) -> Unit,
+    navigationBarPadding: Boolean = false,
     content: @Composable (T) -> Unit
 ) {
     val scope = rememberCoroutineScope()
 
-    BaseBottomSheet(state) {
+    BaseBottomSheet(
+        state,
+        navigationBarPadding
+    ) {
         Column {
             items.forEach { item ->
                 Box(

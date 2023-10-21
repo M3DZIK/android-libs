@@ -27,7 +27,7 @@ fun Project.publishConfig(
         publications {
             create<MavenPublication>("mavenJava") {
                 groupId = "dev.medzik.android"
-                version = "1.2.0"
+                version = "1.2.1"
 
                 configuration()
 

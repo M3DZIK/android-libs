@@ -13,7 +13,7 @@ androidx-material3 = "1.2.0-alpha10"
 androidx-navigation-compose = "2.7.4"
 androidx-ui = "1.5.4"
 kotlinx-coroutines-android = "1.7.3"
-medzik-libcrypto = "1.1.0"
+medzik-libcrypto = "1.2.0"
 # Plugins
 android-application = "8.1.2"
 jetbrains-kotlin-android = "1.9.10"

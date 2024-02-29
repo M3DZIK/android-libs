@@ -85,10 +85,12 @@ private enum class ExampleEnum {
 @Preview(showBackground = true)
 @Composable
 fun ComboBoxDropdownPreview() {
+    var value by rememberMutable(ExampleEnum.FIRST)
+
     ComboBoxDropdown(
         values = ExampleEnum.entries.toTypedArray(),
-        value = ExampleEnum.FIRST,
-        onValueChange = {},
+        value = value,
+        onValueChange = { value = it },
         label = { Text("Example dropdown") }
     )
 }

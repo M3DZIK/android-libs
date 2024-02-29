@@ -23,7 +23,9 @@ interface NavScreen {
     fun getRoute(): String {
         return if (args != null) {
             "${name.lowercase()}/${args!!.joinToString("/") { "{${it.name.lowercase()}}" }}"
-        } else name.lowercase() // if no arguments, return route without arguments
+        } else {
+            name.lowercase() // if no arguments, return route without arguments
+        }
     }
 
     /**

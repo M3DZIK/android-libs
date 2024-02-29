@@ -27,30 +27,32 @@ class DataStoreTests {
     private val testKey = stringPreferencesKey("test_key")
 
     @Test
-    fun testDataStore() = runBlocking {
-        val value = "Hello World!"
+    fun testDataStore() =
+        runBlocking {
+            val value = "Hello World!"
 
-        val context = InstrumentationRegistry.getInstrumentation().context
+            val context = InstrumentationRegistry.getInstrumentation().context
 
-        context.dataStore.write(testKey, value)
-        assertEquals(value, context.dataStore.read(testKey))
+            context.dataStore.write(testKey, value)
+            assertEquals(value, context.dataStore.read(testKey))
 
-        context.dataStore.delete(testKey)
-        assertEquals(null, context.dataStore.read(testKey))
-    }
+            context.dataStore.delete(testKey)
+            assertEquals(null, context.dataStore.read(testKey))
+        }
 
     private val preferenceKeyEnc = "test_enc_key"
 
     @Test
-    fun testEncryptedDataStore() = runBlocking {
-        val value = "Hello World!"
+    fun testEncryptedDataStore() =
+        runBlocking {
+            val value = "Hello World!"
 
-        val context = InstrumentationRegistry.getInstrumentation().context
+            val context = InstrumentationRegistry.getInstrumentation().context
 
-        context.dataStore.writeEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc, value.toByteArray())
-        assertEquals(value, String(context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc)!!))
+            context.dataStore.writeEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc, value.toByteArray())
+            assertEquals(value, String(context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc)!!))
 
-        context.dataStore.deleteEncrypted(preferenceKeyEnc)
-        assertEquals(null, context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc))
-    }
+            context.dataStore.deleteEncrypted(preferenceKeyEnc)
+            assertEquals(null, context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc))
+        }
 }

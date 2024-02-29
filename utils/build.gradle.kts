@@ -38,7 +38,6 @@ dependencies {
 //    androidTestImplementation(libs.test.espresso.core)
 }
 
-
 afterEvaluate {
     publishConfig {
         artifactId = "utils"

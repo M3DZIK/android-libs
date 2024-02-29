@@ -39,10 +39,11 @@ class NavigationTests {
                         Button(onClick = {
                             navController.navigate(
                                 screen = Screen.Example,
-                                args = arrayOf(
-                                    Argument.ID to "test id",
-                                    Argument.Name to "test name"
-                                )
+                                args =
+                                    arrayOf(
+                                        Argument.ID to "test id",
+                                        Argument.Name to "test name"
+                                    )
                             )
                         }) {
                             Text("Click me to go to Example screen")

@@ -24,7 +24,10 @@ object DataStore {
      * @param preferenceKey key to write to KeyStore
      * @param value the value to write
      */
-    suspend inline fun <reified T> DataStore<Preferences>.write(preferenceKey: Preferences.Key<T>, value: T) {
+    suspend inline fun <reified T> DataStore<Preferences>.write(
+        preferenceKey: Preferences.Key<T>,
+        value: T
+    ) {
         edit { it[preferenceKey] = value }
     }
 
@@ -42,7 +45,10 @@ object DataStore {
      * @param preferenceKey key to read from KeyStore
      * @return the decrypted value of the key
      */
-    suspend fun DataStore<Preferences>.readEncrypted(keyStoreAlias: KeyStoreAlias, preferenceKey: String): ByteArray? {
+    suspend fun DataStore<Preferences>.readEncrypted(
+        keyStoreAlias: KeyStoreAlias,
+        preferenceKey: String
+    ): ByteArray? {
         val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
 
         // read cipher text from datastore
@@ -67,7 +73,11 @@ object DataStore {
      * @param value value to encrypt and write
      * @return the value of the key
      */
-    suspend fun DataStore<Preferences>.writeEncrypted(keyStoreAlias: KeyStoreAlias, preferenceKey: String, value: ByteArray) {
+    suspend fun DataStore<Preferences>.writeEncrypted(
+        keyStoreAlias: KeyStoreAlias,
+        preferenceKey: String,
+        value: ByteArray
+    ) {
         val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
 
         // encrypt value

@@ -34,9 +34,9 @@ import androidx.compose.ui.unit.dp
 
 /**
  * Only the dot that is used in [LoadingIndicator].
+ *
  * @param color The color of the dot.
  * @param modifier The modifier to apply to the dot.
- * @see LoadingIndicator
  */
 @Composable
 fun LoadingDot(
@@ -44,19 +44,20 @@ fun LoadingDot(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .background(color)
+        modifier =
+            modifier
+                .clip(CircleShape)
+                .background(color)
     )
 }
 
 /**
  * A loading indicator that animates three dots in a row.
+ *
  * @param animating Whether the indicator should be animating.
  * @param modifier The modifier to apply to the indicator.
  * @param color The color of the indicator.
  * @param indicatorSpacing The spacing between the dots.
- * @see LoadingDot
  */
 @Composable
 fun LoadingIndicator(
@@ -65,25 +66,27 @@ fun LoadingIndicator(
     color: Color = MaterialTheme.colorScheme.primary,
     indicatorSpacing: Dp = 4.dp
 ) {
-    val animatedValues = List(3) { index ->
-        var animatedValue by remember(animating) { mutableFloatStateOf(0f) }
+    val animatedValues =
+        List(3) { index ->
+            var animatedValue by remember(animating) { mutableFloatStateOf(0f) }
 
-        LaunchedEffect(animating) {
-            if (animating) {
-                animate(
-                    initialValue = 8 / 2f,
-                    targetValue = -8 / 2f,
-                    animationSpec = infiniteRepeatable(
-                        animation = tween(durationMillis = 300),
-                        repeatMode = RepeatMode.Reverse,
-                        initialStartOffset = StartOffset(300 / 3 * index)
-                    )
-                ) { value, _ -> animatedValue = value }
+            LaunchedEffect(animating) {
+                if (animating) {
+                    animate(
+                        initialValue = 8 / 2f,
+                        targetValue = -8 / 2f,
+                        animationSpec =
+                            infiniteRepeatable(
+                                animation = tween(durationMillis = 300),
+                                repeatMode = RepeatMode.Reverse,
+                                initialStartOffset = StartOffset(300 / 3 * index)
+                            )
+                    ) { value, _ -> animatedValue = value }
+                }
             }
-        }
 
-        animatedValue
-    }
+            animatedValue
+        }
 
     Row(
         modifier = modifier,
@@ -91,11 +94,12 @@ fun LoadingIndicator(
     ) {
         animatedValues.forEach { animatedValue ->
             LoadingDot(
-                modifier = Modifier
-                    .padding(horizontal = indicatorSpacing)
-                    .width(8.dp)
-                    .aspectRatio(1f)
-                    .offset(y = animatedValue.dp),
+                modifier =
+                    Modifier
+                        .padding(horizontal = indicatorSpacing)
+                        .width(8.dp)
+                        .aspectRatio(1f)
+                        .offset(y = animatedValue.dp),
                 color = color
             )
         }
@@ -110,10 +114,11 @@ fun LoadingIndicatorPreview() {
 
 /**
  * A button that shows the loading indicator, e.g., when clicked while waiting for an API response.
- * @param onClick called when this button is clicked
- * @param modifier the [Modifier] to be applied to this button
- * @param loading if true, a loading animation will be shown
- * @param enabled controls the enabled state of this button
+ *
+ * @param onClick Called when this button is clicked.
+ * @param modifier The [Modifier] to be applied to this button.
+ * @param loading If true, a loading animation will be shown.
+ * @param enabled Controls the enabled state of this button.
  */
 @Composable
 fun LoadingButton(
@@ -130,7 +135,9 @@ fun LoadingButton(
     ) {
         if (loading) {
             LoadingIndicator(animating = true)
-        } else content()
+        } else {
+            content()
+        }
     }
 }
 

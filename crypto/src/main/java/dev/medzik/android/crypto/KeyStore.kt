@@ -24,7 +24,10 @@ object KeyStore {
      * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
      * @return initialized Cipher for encryption
      */
-    fun initForEncryption(alias: KeyStoreAlias, deviceAuthentication: Boolean): Cipher {
+    fun initForEncryption(
+        alias: KeyStoreAlias,
+        deviceAuthentication: Boolean
+    ): Cipher {
         val cipher = Cipher.getInstance(AES_MODE)
         cipher.init(Cipher.ENCRYPT_MODE, getOrGenerateSecretKey(alias.name, deviceAuthentication))
         return cipher
@@ -36,7 +39,11 @@ object KeyStore {
      * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
      * @return initialized Cipher for decryption
      */
-    fun initForDecryption(initializationVector: ByteArray, alias: KeyStoreAlias, deviceAuthentication: Boolean): Cipher {
+    fun initForDecryption(
+        initializationVector: ByteArray,
+        alias: KeyStoreAlias,
+        deviceAuthentication: Boolean
+    ): Cipher {
         val cipher = Cipher.getInstance(AES_MODE)
         cipher.init(
             Cipher.DECRYPT_MODE,
@@ -52,7 +59,10 @@ object KeyStore {
      * @param clearBytes clear bytes to encrypt
      * @return cipher text and initialization vector
      */
-    fun encrypt(cipher: Cipher, clearBytes: ByteArray): CipherText {
+    fun encrypt(
+        cipher: Cipher,
+        clearBytes: ByteArray
+    ): CipherText {
         return CipherText(
             cipherText = Hex.encode(cipher.doFinal(clearBytes)),
             initializationVector = Hex.encode(cipher.iv)
@@ -66,15 +76,31 @@ object KeyStore {
      * @return clear bytes (decrypted data)
      */
     @Throws(Exception::class)
-    fun decrypt(cipher: Cipher, cipherText: String): ByteArray {
+    fun decrypt(
+        cipher: Cipher,
+        cipherText: String
+    ): ByteArray {
         return cipher.doFinal(Hex.decode(cipherText))
     }
 
+    /**
+     * Deletes the given alias from Android KeyStore.
+     * @param alias alias in Android KeyStore to delete
+     */
+    fun deleteKey(alias: String) {
+        getKeyStore().deleteEntry(alias)
+    }
+
     /** Gets the secret key if it exists, otherwise generates a new secret key. */
-    private fun getOrGenerateSecretKey(alias: String, deviceAuthentication: Boolean): SecretKey {
+    private fun getOrGenerateSecretKey(
+        alias: String,
+        deviceAuthentication: Boolean
+    ): SecretKey {
         return if (secretKeyExists(alias)) {
             getKeyStore().getKey(alias, null) as SecretKey
-        } else generateSecretKey(alias, deviceAuthentication)
+        } else {
+            generateSecretKey(alias, deviceAuthentication)
+        }
     }
 
     /** Checks if the given alias of a secret key exists. */
@@ -83,17 +109,21 @@ object KeyStore {
     }
 
     /** Generates a new secret key */
-    private fun generateSecretKey(alias: String, requireAuthentication: Boolean): SecretKey {
+    private fun generateSecretKey(
+        alias: String,
+        requireAuthentication: Boolean
+    ): SecretKey {
         val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
 
-        val keyGenParameterSpec = KeyGenParameterSpec.Builder(
-            alias,
-            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-        )
-            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-            .setUserAuthenticationRequired(requireAuthentication)
-            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-            .build()
+        val keyGenParameterSpec =
+            KeyGenParameterSpec.Builder(
+                alias,
+                KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+            )
+                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                .setUserAuthenticationRequired(requireAuthentication)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                .build()
 
         keyGenerator.init(keyGenParameterSpec)
         return keyGenerator.generateKey()

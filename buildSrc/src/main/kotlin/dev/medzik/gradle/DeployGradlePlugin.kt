@@ -14,9 +14,7 @@ private fun Project.signing(): SigningExtension {
     return extensions.getByType(SigningExtension::class.java)
 }
 
-fun Project.publishConfig(
-    configuration: MavenPublication.() -> Unit
-) {
+fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
     project.apply {
         plugin("maven-publish")
         plugin("signing")

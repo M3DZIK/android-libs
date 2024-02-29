@@ -24,10 +24,11 @@ class NavigationTests {
     fun testFillRoute() {
         assertEquals("home", Screen.Home.fill())
 
-        val filledExampleScreen = Screen.Example.fill(
-            Argument.Test to "test",
-            Argument.Name to "example_name"
-        )
+        val filledExampleScreen =
+            Screen.Example.fill(
+                Argument.Test to "test",
+                Argument.Name to "example_name"
+            )
         assertEquals("example/test/example_name", filledExampleScreen)
     }
 }

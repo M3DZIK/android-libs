@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package dev.medzik.android.components
 
 import androidx.compose.foundation.clickable
@@ -19,20 +17,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberBottomSheetState(): BottomSheetState {
-    val sheetState = SheetState(skipPartiallyExpanded = true, density = LocalDensity.current)
+    val sheetState = SheetState(skipPartiallyExpanded = true) // , density = LocalDensity.current)
     return remember { BottomSheetState(sheetState) }
 }
 
 /** A visibility controller for a bottom sheet */
 @OptIn(ExperimentalMaterial3Api::class)
-class BottomSheetState constructor(
+class BottomSheetState(
     internal val sheetState: SheetState
 ) {
     internal var expanded by mutableStateOf(false)
@@ -108,12 +105,13 @@ fun <T> PickerBottomSheet(
         Column {
             items.forEach { item ->
                 Box(
-                    modifier = Modifier
-                        .clickable {
-                            scope.launch { state.hide() }
-                            onSelected(item)
-                        }
-                        .padding(horizontal = 24.dp),
+                    modifier =
+                        Modifier
+                            .clickable {
+                                scope.launch { state.hide() }
+                                onSelected(item)
+                            }
+                            .padding(horizontal = 24.dp),
                 ) {
                     content(item)
                 }

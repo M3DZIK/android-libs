@@ -63,7 +63,7 @@ fun BaseBottomSheet(
 
     if (state.expanded) {
         ModalBottomSheet(
-            tonalElevation = ElevationTokens.Level2,
+            tonalElevation = 3.dp,
             onDismissRequest = {
                 scope.launch { state.hide() }
             },

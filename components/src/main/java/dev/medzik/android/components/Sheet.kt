@@ -17,13 +17,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberBottomSheetState(): BottomSheetState {
-    val sheetState = SheetState(skipPartiallyExpanded = true) // , density = LocalDensity.current)
+    val sheetState = SheetState(
+        skipPartiallyExpanded = true,
+        density = LocalDensity.current
+    )
+
     return remember { BottomSheetState(sheetState) }
 }
 

@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -29,13 +29,13 @@ android {
 
 dependencies {
     compileOnly(libs.androidx.annotation)
-    compileOnly(libs.kotlinx.coroutines.android)
+    compileOnly(libs.kotlinx.coroutines)
 
     debugImplementation(libs.androidx.annotation)
-    debugImplementation(libs.kotlinx.coroutines.android)
+    debugImplementation(libs.kotlinx.coroutines)
 
-//    androidTestImplementation(libs.androidx.junit)
-//    androidTestImplementation(libs.androidx.espresso.core)
+//    androidTestImplementation(libs.test.junit)
+//    androidTestImplementation(libs.test.espresso.core)
 }
 
 

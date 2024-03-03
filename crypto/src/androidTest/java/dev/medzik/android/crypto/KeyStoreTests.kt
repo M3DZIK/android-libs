@@ -25,5 +25,7 @@ class KeyStoreTests {
         val decryptedBytes = KeyStore.decrypt(cipherDec, encryptedData.cipherText)
 
         assertEquals(clearText, String(decryptedBytes))
+
+        KeyStore.deleteKey(KeyAlias.TEST_KEY)
     }
 }

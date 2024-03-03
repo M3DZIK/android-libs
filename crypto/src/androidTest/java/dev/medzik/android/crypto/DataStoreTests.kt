@@ -54,5 +54,7 @@ class DataStoreTests {
 
             context.dataStore.deleteEncrypted(preferenceKeyEnc)
             assertEquals(null, context.dataStore.readEncrypted(KeyAlias.TEST_DATASTORE_ENCRYPTED, preferenceKeyEnc))
+
+            KeyStore.deleteKey(KeyAlias.TEST_DATASTORE_ENCRYPTED.name)
         }
 }

@@ -93,9 +93,14 @@ object KeyStore {
      *
      * @param alias The secret key alias in Android KeyStore.
      */
-    fun deleteKey(alias: String) {
-        getKeyStore().deleteEntry(alias)
-    }
+    fun deleteKey(alias: KeyStoreAlias) = deleteKey(alias.name)
+
+    /**
+     * Deletes the secret key with the given alias from the Android KeyStore.
+     *
+     * @param alias The secret key alias in Android KeyStore.
+     */
+    fun deleteKey(alias: String) = getKeyStore().deleteEntry(alias)
 
     /** Gets the secret key if it exists, otherwise generates a new secret key. */
     private fun getOrGenerateSecretKey(

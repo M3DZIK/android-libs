@@ -9,20 +9,21 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
-/** A keystore alias interface that represents an alias for keystore operations. */
+/** Interface representing an alias for keystore operations. */
 interface KeyStoreAlias {
     val name: String
 }
 
-/** Android KeyStore utility class for encrypting and decrypting data. */
+/** Utility class for encrypting and decrypting data using the Android KeyStore. */
 object KeyStore {
     private const val AES_MODE = "AES/GCM/NoPadding"
 
     /**
      * Initializes a new Cipher for encryption.
-     * @param alias secret key alias in Android KeyStore
-     * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
-     * @return initialized Cipher for encryption
+     *
+     * @param alias The secret key alias in Android KeyStore.
+     * @param deviceAuthentication Whether user authentication is required to access the secret key.
+     * @return An initialized Cipher for encryption.
      */
     fun initForEncryption(
         alias: KeyStoreAlias,
@@ -35,9 +36,11 @@ object KeyStore {
 
     /**
      * Initializes a new Cipher for decryption.
-     * @param alias secret key alias in Android KeyStore
-     * @param deviceAuthentication whether to require user authentication to the secret key (e.g., using a biometric fingerprint)
-     * @return initialized Cipher for decryption
+     *
+     * @param initializationVector The initialization vector used for Cipher decryption.
+     * @param alias The secret key alias in Android KeyStore.
+     * @param deviceAuthentication Whether user authentication is required to access the secret key.
+     * @return An initialized Cipher for decryption.
      */
     fun initForDecryption(
         initializationVector: ByteArray,
@@ -54,10 +57,11 @@ object KeyStore {
     }
 
     /**
-     * Encrypts the given clear bytes with specified cipher.
-     * @param cipher cipher to use for encryption
-     * @param clearBytes clear bytes to encrypt
-     * @return cipher text and initialization vector
+     * Encrypts the given data using the specified Cipher.
+     *
+     * @param cipher The initialized cipher.
+     * @param clearBytes The clear bytes to encrypt.
+     * @return A CipherText object containing the encrypted data and initialization vector.
      */
     fun encrypt(
         cipher: Cipher,
@@ -70,10 +74,11 @@ object KeyStore {
     }
 
     /**
-     * Decrypts the given cipher text with specified cipher.
-     * @param cipher cipher to use for decryption
-     * @param cipherText cipher text to decrypt
-     * @return clear bytes (decrypted data)
+     * Decrypts the given cipher text using the specified cipher.
+     *
+     * @param cipher The initialized cipher.
+     * @param cipherText The encrypted data to decrypt
+     * @return The decrypted data as a byte array.
      */
     @Throws(Exception::class)
     fun decrypt(
@@ -84,8 +89,9 @@ object KeyStore {
     }
 
     /**
-     * Deletes the given alias from Android KeyStore.
-     * @param alias alias in Android KeyStore to delete
+     * Deletes the secret key with the given alias from the Android KeyStore.
+     *
+     * @param alias The secret key alias in Android KeyStore.
      */
     fun deleteKey(alias: String) {
         getKeyStore().deleteEntry(alias)

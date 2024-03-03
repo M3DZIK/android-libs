@@ -8,21 +8,23 @@ import dev.medzik.libcrypto.Hex
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-/** Android DataStore utility class for storing data */
+/** Utility class for storing data using Android's DataStore. */
 object DataStore {
     /**
-     * Reads the key from KeyStore.
-     * @param preferenceKey key to read from KeyStore
-     * @return the value of the key
+     * Reads a value associated with the specified key from the DataStore.
+     *
+     * @param preferenceKey The key to retrieve the value for.
+     * @return The value stored under the specified key, or null if not found.
      */
     suspend inline fun <reified T> DataStore<Preferences>.read(preferenceKey: Preferences.Key<T>): T? {
         return data.map { it[preferenceKey] }.first()
     }
 
     /**
-     * Writes the key to KeyStore.
-     * @param preferenceKey key to write to KeyStore
-     * @param value the value to write
+     * Writes a value to the DataStore under the specified key.
+     *
+     * @param preferenceKey The key to store the value under.
+     * @param value The value to store.
      */
     suspend inline fun <reified T> DataStore<Preferences>.write(
         preferenceKey: Preferences.Key<T>,
@@ -32,18 +34,20 @@ object DataStore {
     }
 
     /**
-     * Deletes the key from KeyStore.
-     * @param preferenceKey key to delete from KeyStore
+     * Deletes the value associated with the specified key from the DataStore.
+     *
+     * @param preferenceKey The key of the value to be deleted.
      */
     suspend inline fun <reified T> DataStore<Preferences>.delete(preferenceKey: Preferences.Key<T>) {
         edit { it.remove(preferenceKey) }
     }
 
     /**
-     * Reads the encrypted key from KeyStore.
-     * @param keyStoreAlias secret key alias in Android KeyStore to decrypt the value
-     * @param preferenceKey key to read from KeyStore
-     * @return the decrypted value of the key
+     * Reads a value associated with the specified encrypted key from the DataStore.
+     *
+     * @param keyStoreAlias The alias of the secret key in the Android KeyStore used for decryption.
+     * @param preferenceKey The key to retrieve the encrypted value for.
+     * @return The decrypted value stored under the specified encrypted key, or null if not found.
      */
     suspend fun DataStore<Preferences>.readEncrypted(
         keyStoreAlias: KeyStoreAlias,
@@ -67,11 +71,11 @@ object DataStore {
     }
 
     /**
-     * Writes the encrypted key from KeyStore.
-     * @param keyStoreAlias secret key alias in Android KeyStore to encrypt the value
-     * @param preferenceKey key to write KeyStore
-     * @param value value to encrypt and write
-     * @return the value of the key
+     * Writes a encrypted value to the DataStore under the specified key.
+     *
+     * @param keyStoreAlias The alias of the secret key in the Android KeyStore used for encryption.
+     * @param preferenceKey The key to store the encrypted value under.
+     * @param value The value to store.
      */
     suspend fun DataStore<Preferences>.writeEncrypted(
         keyStoreAlias: KeyStoreAlias,
@@ -90,8 +94,9 @@ object DataStore {
     }
 
     /**
-     * Deletes the encrypted key from KeyStore.
-     * @param preferenceKey key to delete from KeyStore
+     * Deletes the encrypted value associated with the specified key from the DataStore.
+     *
+     * @param preferenceKey The key of the encrypted value to be deleted.
      */
     suspend fun DataStore<Preferences>.deleteEncrypted(preferenceKey: String) {
         val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")

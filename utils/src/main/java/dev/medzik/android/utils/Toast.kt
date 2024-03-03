@@ -5,8 +5,9 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 
 /**
- * Show toast dialog.
- * @param text The text to show.
+ * Shows a toast with the given message.
+ *
+ * @param text The message to be shown.
  */
 fun Context.showToast(text: String) =
     runOnUiThread {
@@ -14,8 +15,9 @@ fun Context.showToast(text: String) =
     }
 
 /**
- * Show toast dialog.
- * @param resId The resource id of the string resource to use.
+ * Shows a toast with the given message.
+ *
+ * @param resId The resource id of the string resource to be shown.
  */
 fun Context.showToast(
     @StringRes resId: Int

@@ -166,11 +166,11 @@ fun PickerDialogPreview() {
             onSelected = {}
         ) {
             Text(
+                text = it,
                 modifier =
                     Modifier
                         .padding(vertical = 12.dp)
-                        .fillMaxWidth(),
-                text = it
+                        .fillMaxWidth()
             )
         }
     }

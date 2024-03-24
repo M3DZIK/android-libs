@@ -26,10 +26,11 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberBottomSheetState(): BottomSheetState {
-    val sheetState = SheetState(
-        skipPartiallyExpanded = true,
-        density = LocalDensity.current
-    )
+    val sheetState =
+        SheetState(
+            skipPartiallyExpanded = true,
+            density = LocalDensity.current
+        )
 
     return remember { BottomSheetState(sheetState) }
 }

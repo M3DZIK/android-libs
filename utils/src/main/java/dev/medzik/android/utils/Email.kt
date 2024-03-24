@@ -16,10 +16,11 @@ fun Activity.openEmailApplication(
     subject: String? = null,
     body: String? = null
 ) {
-    val intent = Intent(
-        Intent.ACTION_SENDTO,
-        Uri.parse("mailto:$email")
-    )
+    val intent =
+        Intent(
+            Intent.ACTION_SENDTO,
+            Uri.parse("mailto:$email")
+        )
 
     if (!subject.isNullOrBlank()) {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)

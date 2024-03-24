@@ -9,8 +9,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.sdk.min.get().toInt()
-
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -33,9 +31,6 @@ dependencies {
 
     debugImplementation(libs.androidx.annotation)
     debugImplementation(libs.kotlinx.coroutines)
-
-//    androidTestImplementation(libs.test.junit)
-//    androidTestImplementation(libs.test.espresso.core)
 }
 
 afterEvaluate {

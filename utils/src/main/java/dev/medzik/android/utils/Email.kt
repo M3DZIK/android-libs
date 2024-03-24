@@ -7,9 +7,9 @@ import android.net.Uri
 /**
  * Opens the default email application with the given email address, subject, and body.
  *
- * @param email The email address.
- * @param subject The subject of the email.
- * @param body The body of the email.
+ * @param email email address
+ * @param subject subject of the email
+ * @param body body of the email
  */
 fun Activity.openEmailApplication(
     email: String,

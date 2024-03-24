@@ -22,10 +22,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
- * A composable function to display a preference group title.
+ * Title for a group of preferences.
  *
- * @param title The title to display for the preference group.
- * @param modifier The modifier for customizing the appearance and behavior of the preference group title.
+ * @param title title of the group
+ * @param modifier the [Modifier] to be applied to the title
  */
 @Composable
 fun PreferenceGroupTitle(
@@ -39,16 +39,16 @@ fun PreferenceGroupTitle(
 }
 
 /**
- * A composable function to display a preference entry.
+ * Displays a preference entry.
  *
- * @param modifier The modifier for customizing the appearance and behavior of the preference entry.
- * @param title The title of the preference entry.
- * @param description An optional description of the preference entry.
- * @param content An optional composable content to display within the preference entry.
- * @param icon An optional icon to display with the preference entry.
- * @param trailingContent An optional composable content to display at the end of the preference entry.
- * @param onClick The callback to execute when the preference entry is clicked.
- * @param isEnabled A flag indicating whether the preference entry is enabled or disabled.
+ * @param modifier the [Modifier] to be applied to the preference entry
+ * @param title title of the preference entry
+ * @param description optional description of the preference entry
+ * @param content optional content to display within the preference entry
+ * @param icon optional icon to display with the preference entry
+ * @param trailingContent optional composable content to display at the end of the preference entry
+ * @param onClick called when clicked the preference entry
+ * @param isEnabled indicates whether the preference entry is enabled or disabled
  */
 @Composable
 fun PreferenceEntry(
@@ -112,15 +112,15 @@ fun PreferenceEntry(
 }
 
 /**
- * A composable function to display a switcher preference.
+ * Displays a switcher preference.
  *
- * @param modifier The modifier for customizing the appearance and behavior of the switcher preference.
- * @param title The title of the switcher preference.
- * @param description An optional description of the switcher preference.
- * @param icon An optional icon to display with the switcher preference.
- * @param checked The current state of the switch (checked or unchecked).
- * @param onCheckedChange The callback to execute when the switch state changes.
- * @param isEnabled A flag indicating whether the switcher preference is enabled or disabled.
+ * @param modifier the [Modifier] to be applied to the switcher preference
+ * @param title title of the switcher preference
+ * @param description optional description of the switcher preference
+ * @param icon optional icon to display with the switcher preference
+ * @param checked current state of the switch (checked - true or unchecked - false)
+ * @param onCheckedChange called when the state of the switch is changed
+ * @param isEnabled indicates whether the preference entry is enabled or disabled
  */
 @Composable
 fun SwitcherPreference(
@@ -149,15 +149,15 @@ fun SwitcherPreference(
 }
 
 /**
- * A composable function to display a property preference.
+ * Displays a property preference.
  *
  * @param modifier The modifier for customizing the appearance and behavior of the property preference.
  * @param title The title of the property preference.
  * @param description An optional description of the property preference.
  * @param icon An optional icon to display with the property preference.
  * @param currentValue The current value of the property.
- * @param onClick The callback to execute when the property preference is clicked.
- * @param isEnabled A flag indicating whether the property preference is enabled or disabled.
+ * @param onClick called when clicked the property preference
+ * @param isEnabled indicates whether the preference entry is enabled or disabled
  */
 @Composable
 fun PropertyPreference(

@@ -25,12 +25,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * A loading indicator that animates three dots in a row.
+ * Loading indicator that animates three dots in a row.
  *
- * @param animating Whether the indicator should be animating.
- * @param modifier The modifier to apply to the indicator.
- * @param color The color of the indicator.
- * @param indicatorSpacing The spacing between the dots.
+ * @param animating whether the indicator should be animating.
+ * @param modifier the [Modifier] to be applied to the indicator
+ * @param color the [Color] of the dots
+ * @param indicatorSpacing spacing between the dots
  */
 @Composable
 fun LoadingIndicator(

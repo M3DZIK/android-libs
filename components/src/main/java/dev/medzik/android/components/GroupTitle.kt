@@ -7,10 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
- * A composable function that displays a title for a group of items.
+ * Displays a title for a group of items.
  *
- * @param text the text to display
- * @param modifier optional [Modifier] for the title
+ * @param text The text to display.
+ * @param modifier The modifier to be applied to the title.
  */
 @Composable
 fun GroupTitle(

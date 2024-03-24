@@ -19,11 +19,11 @@ import androidx.compose.ui.tooling.preview.Preview
 /**
  * Dropdown menu for selecting an enum value.
  *
- * @param modifier The modifier to apply to the composable.
- * @param values The list of items to display in the dropdown menu.
- * @param value The currently selected item.
- * @param onValueChange A callback invoked when the selected item changes.
- * @param label The content of the text field.
+ * @param modifier the [Modifier] to be applied to the text field
+ * @param values list of enum values
+ * @param value currently selected value
+ * @param onValueChange callback to be called when a value is selected
+ * @param label label for the text field
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

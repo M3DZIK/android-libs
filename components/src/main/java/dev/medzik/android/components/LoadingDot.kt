@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 /**
  * The dot that is used in [LoadingIndicator].
  *
- * @param color The color of the dot.
- * @param modifier The modifier to apply to the dot.
+ * @param color the [Color] of the dot
+ * @param modifier the [Modifier] to be applied to the dot
  */
 @Composable
 fun LoadingDot(

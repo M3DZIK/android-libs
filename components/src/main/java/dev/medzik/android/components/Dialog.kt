@@ -41,8 +41,8 @@ class DialogState {
 /**
  * Basic dialog composable.
  *
- * @param state The state that controls visibility of the dialog.
- * @param content The content of the dialog to display.
+ * @param state visibility state
+ * @param content dialog content to be displayed
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -101,11 +101,11 @@ fun BaseDialogPreview() {
 /**
  * Picker dialog with a list of items.
  *
- * @param state The state that controls visibility of the dialog.
- * @param title The title to display at the top of the dialog.
- * @param items The list of items to display in the picker.
- * @param onSelected A callback function invoked when the item is selected.
- * @param content Composable lambda that defines the visual representation of each item in the picker.
+ * @param state visibility state
+ * @param title title to display at the top of the dialog
+ * @param items list of items to be displayed in the dialog
+ * @param onSelected callback function to be called when an item is selected
+ * @param content defines the visual representation of each item in the picker
  */
 @Composable
 fun <T> PickerDialog(

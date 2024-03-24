@@ -55,10 +55,11 @@ class BottomSheetState(
 }
 
 /**
- * A composable function for displaying a basic bottom sheet.
- * @param state the state that controls visibility of the bottom sheet
+ * Displays a basic bottom sheet.
+ *
+ * @param state visible state
  * @param navigationBarPadding determines whether the bottom sheet should have navigation bar padding
- * @param content the content of the bottom sheet to display
+ * @param content content of the bottom sheet to display
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,12 +90,13 @@ fun BaseBottomSheet(
 }
 
 /**
- * A composable function for displaying a picker bottom sheet with a list of items.
- * @param state the state that controls visibility of the bottom sheet
+ * Displaying a picker bottom sheet with a list of items.
+ *
+ * @param state visible state
  * @param items the list of items to display in the bottom sheet
- * @param onSelected a callback function invoked when the item is selected
+ * @param onSelected callback function invoked when the item is selected
  * @param navigationBarPadding determines whether the bottom sheet should have navigation bar padding
- * @param content composable lambda that defines the visual representation of each item in the picker
+ * @param content visual representation of each item in the picker
  */
 @Composable
 fun <T> PickerBottomSheet(
@@ -143,6 +145,9 @@ fun PickerBottomSheetPreview() {
         onSelected = { selectedItem.value = it },
         navigationBarPadding = true
     ) { item ->
-        Text(text = item)
+        Text(
+            text = item,
+            modifier = Modifier.padding(8.dp)
+        )
     }
 }

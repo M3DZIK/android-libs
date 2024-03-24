@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
- * A button that shows the loading indicator, e.g., when clicked while waiting for an API response.
+ * Button with an option to show a loading animation.
  *
- * @param onClick Called when this button is clicked.
- * @param modifier The [Modifier] to be applied to this button.
- * @param loading If true, a loading animation will be shown.
- * @param enabled Controls the enabled state of this button.
+ * @param onClick called when the button is clicked
+ * @param modifier the [Modifier] to be applied to the button
+ * @param loading state of the loading animation, if true, the animation will be shown
+ * @param enabled controls the enabled state of this button
  */
 @Composable
 fun LoadingButton(

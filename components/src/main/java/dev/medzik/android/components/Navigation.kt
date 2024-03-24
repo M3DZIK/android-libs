@@ -16,7 +16,7 @@ interface NavScreen {
     /**
      * Returns the route destination for the screen without filling arguments.
      *
-     * @return The route destination as a string.
+     * @return route destination for the screen
      */
     fun getRoute(): String {
         return if (args != null) {
@@ -29,8 +29,8 @@ interface NavScreen {
     /**
      * Returns the route destination for the screen with filled arguments.
      *
-     * @param args Pairs of [NavArgument] and their corresponding argument values.
-     * @return The route destination as a string with filled arguments.
+     * @param args pairs of [NavArgument] and their corresponding argument values
+     * @return route destination for the screen with filled arguments
      * @throws IllegalArgumentException if the number of provided arguments does not match the expected count.
      */
     fun fill(vararg args: Pair<NavArgument, String>): String {
@@ -53,8 +53,8 @@ fun NavController.getString(argument: NavArgument): String? {
 /**
  * Navigates to the specified [NavScreen] with the provided [NavArgument] values.
  *
- * @param screen the target screen to navigate to
- * @param args a list of argument pairs in the form of [NavArgument] and [String] values
+ * @param screen the target screen
+ * @param args list of argument pairs in the form of [NavArgument] and [String] values
  * @param disableBack determines whether to disable the "back" navigation from this screen
  * @param builderOptions a function that allows customization of custom navigation options
  */

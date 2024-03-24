@@ -68,7 +68,7 @@ fun BaseDialog(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
 fun BaseDialogPreview() {
     val state = rememberDialogState()
@@ -150,7 +150,7 @@ fun <T> PickerDialog(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
 fun PickerDialogPreview() {
     val state = rememberDialogState()

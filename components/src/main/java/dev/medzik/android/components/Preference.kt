@@ -21,20 +21,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-/** A composable function with text with secondary text color. */
-@Composable
-fun SecondaryText(
-    text: String,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.labelLarge,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = modifier
-    )
-}
-
 /**
  * A composable function to display a preference group title.
  *
@@ -46,7 +32,7 @@ fun PreferenceGroupTitle(
     title: String,
     modifier: Modifier = Modifier
 ) {
-    SecondaryText(
+    GroupTitle(
         text = title,
         modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp)
     )
@@ -206,7 +192,7 @@ fun PropertyPreference(
 fun PreferencesPreview() {
     Column {
         PreferenceGroupTitle(
-            title = "Group title"
+            title = "First Group"
         )
 
         var firstChecked by rememberMutableBoolean(true)
@@ -222,6 +208,10 @@ fun PreferencesPreview() {
             description = "Second Switcher description",
             checked = secondChecked,
             onCheckedChange = { secondChecked = !secondChecked }
+        )
+
+        PreferenceGroupTitle(
+            title = "Second Group"
         )
 
         val propertyItems = listOf("First", "Second", "Third")

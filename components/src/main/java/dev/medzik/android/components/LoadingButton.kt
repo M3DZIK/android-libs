@@ -2,9 +2,10 @@ package dev.medzik.android.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,26 +39,26 @@ fun LoadingButton(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun LoadingButtonPreview() {
-    Surface {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            LoadingButton(
-                loading = false,
-                onClick = {},
-            ) {
-                Text("Loading - false")
-            }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        var loading by rememberMutableBoolean(false)
 
-            LoadingButton(
-                loading = true,
-                onClick = {},
-            ) {
-                Text("Loading - true")
-            }
+        LoadingButton(
+            loading = loading,
+            onClick = { loading = !loading },
+        ) {
+            Text("Click me")
+        }
+
+        LoadingButton(
+            loading = true,
+            onClick = {},
+        ) {
+            Text("Loading")
         }
     }
 }

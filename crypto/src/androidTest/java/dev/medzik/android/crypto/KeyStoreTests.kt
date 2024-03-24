@@ -21,7 +21,12 @@ class KeyStoreTests {
         val encryptedData = KeyStore.encrypt(cipherEnc, clearText.toByteArray())
 
         // decrypt
-        val cipherDec = KeyStore.initForDecryption(Hex.decode(encryptedData.initializationVector), KeyAlias.TEST_KEY, false)
+        val cipherDec =
+            KeyStore.initForDecryption(
+                KeyAlias.TEST_KEY,
+                Hex.decode(encryptedData.initializationVector),
+                false
+            )
         val decryptedBytes = KeyStore.decrypt(cipherDec, encryptedData.cipherText)
 
         assertEquals(clearText, String(decryptedBytes))

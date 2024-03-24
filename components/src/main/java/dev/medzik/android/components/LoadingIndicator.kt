@@ -82,5 +82,8 @@ fun LoadingIndicator(
 @Preview
 @Composable
 fun LoadingIndicatorPreview() {
-    LoadingIndicator(animating = true)
+    LoadingIndicator(
+        animating = true,
+        modifier = Modifier.padding(8.dp)
+    )
 }

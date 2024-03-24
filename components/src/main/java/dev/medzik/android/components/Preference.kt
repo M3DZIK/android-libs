@@ -10,10 +10,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -200,32 +201,53 @@ fun PropertyPreference(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PreferencesPreview() {
-    Surface {
-        Column {
-            PreferenceGroupTitle(
-                title = "Group title"
-            )
+    Column {
+        PreferenceGroupTitle(
+            title = "Group title"
+        )
 
-            SwitcherPreference(
-                title = "First Switcher title",
-                checked = true,
-                onCheckedChange = {}
-            )
+        var firstChecked by rememberMutableBoolean(true)
+        SwitcherPreference(
+            title = "First Switcher title",
+            checked = firstChecked,
+            onCheckedChange = { firstChecked = !firstChecked }
+        )
 
-            SwitcherPreference(
-                title = "Second Switcher title",
-                description = "Second Switcher description",
-                checked = false,
-                onCheckedChange = {}
-            )
+        var secondChecked by rememberMutableBoolean(false)
+        SwitcherPreference(
+            title = "Second Switcher title",
+            description = "Second Switcher description",
+            checked = secondChecked,
+            onCheckedChange = { secondChecked = !secondChecked }
+        )
 
-            PropertyPreference(
-                title = "Property title",
-                currentValue = "Value",
-                onClick = {}
+        val propertyItems = listOf("First", "Second", "Third")
+        var currentItem by rememberMutable(propertyItems[0])
+        val state = rememberDialogState()
+
+        PropertyPreference(
+            title = "Property title",
+            currentValue = currentItem,
+            onClick = { state.show() }
+        )
+
+        PickerDialog(
+            state,
+            title = "Picker Dialog",
+            propertyItems,
+            onSelected = {
+                currentItem = it
+            }
+        ) {
+            Text(
+                text = it,
+                modifier =
+                    Modifier
+                        .padding(vertical = 12.dp)
+                        .fillMaxWidth()
             )
         }
     }

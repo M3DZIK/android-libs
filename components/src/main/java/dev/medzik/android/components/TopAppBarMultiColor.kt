@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBarMultiColor(
+fun TopAppBarMultiColor(
     firstText: String,
     firstColor: Color = MaterialTheme.colorScheme.secondary,
     secondText: String,
@@ -43,8 +43,8 @@ fun TopBarMultiColor(
 
 @Preview
 @Composable
-fun TopBarMultiColorPreview() {
-    TopBarMultiColor(
+fun TopAppBarMultiColorPreview() {
+    TopAppBarMultiColor(
         firstText = "First",
         secondText = "Second"
     )

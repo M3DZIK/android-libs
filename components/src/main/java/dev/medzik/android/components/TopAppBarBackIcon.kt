@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun TopBarBackIcon(navController: NavController) {
+fun TopAppBarBackIcon(navController: NavController) {
     IconButton(onClick = { navController.popBackStack() }) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,

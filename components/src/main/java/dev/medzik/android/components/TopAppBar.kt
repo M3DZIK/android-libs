@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(
+fun TopAppBar(
     title: String,
     navigationIcon: @Composable (() -> Unit) = {},
     actions: @Composable (RowScope.() -> Unit) = {}
@@ -35,11 +35,11 @@ fun TopBar(
 
 @Preview
 @Composable
-fun TopBarPreview() {
-    TopBar(
+fun TopAppBarPreview() {
+    TopAppBar(
         title = "Title",
         navigationIcon = {
-            TopBarBackIcon(navController = NavController(LocalContext.current))
+            TopAppBarBackIcon(navController = NavController(LocalContext.current))
         },
         actions = {
             IconButton(onClick = {}) {

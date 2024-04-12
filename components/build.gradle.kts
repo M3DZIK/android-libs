@@ -33,9 +33,11 @@ android {
 }
 
 dependencies {
+    compileOnly(libs.compose.material.icons)
     compileOnly(libs.compose.material3)
     compileOnly(libs.compose.navigation)
 
+    debugImplementation(libs.compose.material.icons)
     debugImplementation(libs.compose.material3)
     debugImplementation(libs.compose.navigation)
 

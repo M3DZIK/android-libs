@@ -8,8 +8,20 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 
+/**
+ * [TopAppBar] with text with two different text colors.
+ *
+ * @param firstText the first text in the row
+ * @param firstColor the [Color] of the first text
+ * @param secondText the second text in the row
+ * @param secondColor the [Color] of the second text
+ * @param navigationIcon a lambda with navigation icon representation displayed at the start of the app bar
+ * @param actions a lambda with actions displayed at the end of the app bar
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBarMultiColor(
@@ -46,6 +58,9 @@ fun TopAppBarMultiColor(
 fun TopAppBarMultiColorPreview() {
     TopAppBarMultiColor(
         firstText = "First",
-        secondText = "Second"
+        secondText = "Second",
+        navigationIcon = {
+            TopAppBarBackIcon(navController = NavController(LocalContext.current))
+        }
     )
 }

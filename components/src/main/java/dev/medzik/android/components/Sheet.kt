@@ -81,9 +81,7 @@ fun BaseBottomSheet(
             content()
 
             if (navigationBarPadding) {
-                Spacer(
-                    modifier = Modifier.navigationBarsPadding()
-                )
+                Spacer(modifier = Modifier.navigationBarsPadding())
             }
         }
     }
@@ -115,13 +113,12 @@ fun <T> PickerBottomSheet(
         Column {
             items.forEach { item ->
                 Box(
-                    modifier =
-                        Modifier
-                            .clickable {
-                                scope.launch { state.hide() }
-                                onSelected(item)
-                            }
-                            .padding(horizontal = 24.dp),
+                    modifier = Modifier
+                        .clickable {
+                            scope.launch { state.hide() }
+                            onSelected(item)
+                        }
+                        .padding(horizontal = 24.dp)
                 ) {
                     content(item)
                 }

@@ -16,7 +16,9 @@ object DataStore {
      * @param preferenceKey preference key in the DataStore
      * @return value stored under the specified key, or null if not found.
      */
-    suspend inline fun <reified T> DataStore<Preferences>.read(preferenceKey: Preferences.Key<T>): T? {
+    suspend inline fun <reified T> DataStore<Preferences>.read(
+        preferenceKey: Preferences.Key<T>
+    ): T? {
         return data.map { it[preferenceKey] }.first()
     }
 
@@ -38,7 +40,9 @@ object DataStore {
      *
      * @param preferenceKey preference key in the DataStore
      */
-    suspend inline fun <reified T> DataStore<Preferences>.delete(preferenceKey: Preferences.Key<T>) {
+    suspend inline fun <reified T> DataStore<Preferences>.delete(
+        preferenceKey: Preferences.Key<T>
+    ) {
         edit { it.remove(preferenceKey) }
     }
 }

@@ -25,10 +25,9 @@ fun LoadingDot(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier =
-            modifier
-                .clip(CircleShape)
-                .background(color)
+        modifier = modifier
+            .clip(CircleShape)
+            .background(color)
     )
 }
 
@@ -37,9 +36,8 @@ fun LoadingDot(
 fun LoadingDotPreview() {
     LoadingDot(
         color = MaterialTheme.colorScheme.primary,
-        modifier =
-            Modifier
-                .width(8.dp)
-                .aspectRatio(1f)
+        modifier = Modifier
+            .width(8.dp)
+            .aspectRatio(1f)
     )
 }

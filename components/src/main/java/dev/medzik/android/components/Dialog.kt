@@ -80,16 +80,13 @@ fun BaseDialogPreview() {
                 Text(
                     text = "Example Dialog",
                     fontWeight = FontWeight.Black,
-                    modifier =
-                        Modifier
-                            .padding(horizontal = 24.dp)
-                            .padding(bottom = 8.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 24.dp)
+                        .padding(bottom = 8.dp)
                 )
 
                 Box(
-                    modifier =
-                        Modifier
-                            .padding(horizontal = 24.dp)
+                    modifier = Modifier.padding(horizontal = 24.dp)
                 ) {
                     Text("Some text")
                 }
@@ -121,26 +118,21 @@ fun <T> PickerDialog(
                 Text(
                     text = title,
                     fontWeight = FontWeight.Black,
-                    modifier =
-                        Modifier
-                            .padding(horizontal = 24.dp)
-                            .padding(bottom = 8.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 24.dp)
+                        .padding(bottom = 8.dp)
                 )
             }
 
             items.forEach { item ->
                 Box(
-                    modifier =
-                        Modifier
-                            .clickable {
-                                onSelected(item)
-                                state.hide()
-                            }
+                    modifier = Modifier.clickable {
+                        onSelected(item)
+                        state.hide()
+                    }
                 ) {
                     Row(
-                        modifier =
-                            Modifier
-                                .padding(horizontal = 24.dp)
+                        modifier = Modifier.padding(horizontal = 24.dp)
                     ) {
                         content(item)
                     }

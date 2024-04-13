@@ -63,15 +63,14 @@ fun PreferenceEntry(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier =
-            modifier
-                .fillMaxWidth()
-                .clickable(
-                    enabled = isEnabled,
-                    onClick = onClick
-                )
-                .alpha(if (isEnabled) 1f else 0.5f)
-                .padding(vertical = 16.dp, horizontal = 16.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(
+                enabled = isEnabled,
+                onClick = onClick
+            )
+            .alpha(if (isEnabled) 1f else 0.5f)
+            .padding(vertical = 16.dp, horizontal = 16.dp)
     ) {
         if (icon != null) {
             Box(
@@ -234,10 +233,9 @@ fun PreferencesPreview() {
         ) {
             Text(
                 text = it,
-                modifier =
-                    Modifier
-                        .padding(vertical = 12.dp)
-                        .fillMaxWidth()
+                modifier = Modifier
+                    .padding(vertical = 12.dp)
+                    .fillMaxWidth()
             )
         }
     }

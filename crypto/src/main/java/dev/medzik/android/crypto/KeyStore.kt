@@ -93,13 +93,11 @@ object KeyStore {
      */
     fun deleteKey(alias: String) = getKeyStore().deleteEntry(alias)
 
-    private fun createEmptyCipher(): Cipher =
-        Cipher
-            .getInstance(
-                KeyProperties.KEY_ALGORITHM_AES + "/" +
-                    KeyProperties.BLOCK_MODE_GCM + "/" +
-                    KeyProperties.ENCRYPTION_PADDING_NONE,
-            )
+    private fun createEmptyCipher(): Cipher = Cipher.getInstance(
+        KeyProperties.KEY_ALGORITHM_AES + "/" +
+        KeyProperties.BLOCK_MODE_GCM + "/" +
+        KeyProperties.ENCRYPTION_PADDING_NONE,
+    )
 
     private fun getSecretKey(
         alias: String,
@@ -114,16 +112,14 @@ object KeyStore {
         }
 
         val keyPurpose = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-        val keySpec =
-            KeyGenParameterSpec.Builder(alias, keyPurpose)
-                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                .setUserAuthenticationRequired(deviceAuthentication)
-                .build()
+        val keySpec = KeyGenParameterSpec.Builder(alias, keyPurpose)
+            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+            .setUserAuthenticationRequired(deviceAuthentication)
+            .build()
 
-        val keyGenerator =
-            KeyGenerator
-                .getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+        val keyGenerator = KeyGenerator
+            .getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
         keyGenerator.init(keySpec)
         return keyGenerator.generateKey()
     }

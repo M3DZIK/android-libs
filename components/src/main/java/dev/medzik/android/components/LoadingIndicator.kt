@@ -48,12 +48,11 @@ fun LoadingIndicator(
                     animate(
                         initialValue = 8 / 2f,
                         targetValue = -8 / 2f,
-                        animationSpec =
-                            infiniteRepeatable(
-                                animation = tween(durationMillis = 300),
-                                repeatMode = RepeatMode.Reverse,
-                                initialStartOffset = StartOffset(300 / 3 * index)
-                            )
+                        animationSpec = infiniteRepeatable(
+                            animation = tween(durationMillis = 300),
+                            repeatMode = RepeatMode.Reverse,
+                            initialStartOffset = StartOffset(300 / 3 * index)
+                        )
                     ) { value, _ -> animatedValue = value }
                 }
             }
@@ -67,12 +66,11 @@ fun LoadingIndicator(
     ) {
         animatedValues.forEach { animatedValue ->
             LoadingDot(
-                modifier =
-                    Modifier
-                        .padding(horizontal = indicatorSpacing)
-                        .width(8.dp)
-                        .aspectRatio(1f)
-                        .offset(y = animatedValue.dp),
+                modifier = Modifier
+                    .padding(horizontal = indicatorSpacing)
+                    .width(8.dp)
+                    .aspectRatio(1f)
+                    .offset(y = animatedValue.dp),
                 color = color
             )
         }

@@ -10,7 +10,6 @@ on:
 jobs:
   unit-tests:
     name: Unit Tests
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -31,8 +30,7 @@ jobs:
 
   instrumental-tests:
     name: Instrumental Tests
-
-    runs-on: macos-latest
+    runs-on: macos-13
     strategy:
       fail-fast: false
       matrix:

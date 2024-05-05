@@ -49,7 +49,7 @@ fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
 
                     developers {
                         developer {
-                            name.set("M3DZIK")
+                            name.set("Oskar Karpiński")
                             email.set("me@medzik.dev")
                         }
                     }

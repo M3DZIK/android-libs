@@ -30,7 +30,7 @@ jobs:
 
   instrumental-tests:
     name: Instrumental Tests
-    runs-on: macos-13
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -52,6 +52,6 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           target: default
-          arch: x86_64
+          arch: arm64-v8a
           profile: Nexus 6
           script: ./gradlew connectedCheck

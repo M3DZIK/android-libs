@@ -1,30 +1,33 @@
 [versions]
-# Android SDK
 android-sdk-min = "24"
 android-sdk-compile = "34"
-# Libraries
+
+compose = "1.6.7"
+compose-compiler = "1.5.13"
+compose-material3 = "1.2.1"
+compose-navigation = "2.7.7"
+
 androidx-annotation = "1.7.1"
-androidx-compose-compiler = "1.5.13"
-androidx-compose-runtime = "1.6.7"
 androidx-datastore = "1.1.1"
+
+kotlinx-coroutines = "1.8.0"
+libcrypto = "1.2.0"
+
+# Tests
 androidx-espresso-core = "3.5.1"
 androidx-junit = "1.1.5"
-androidx-material3 = "1.2.1"
-androidx-navigation-compose = "2.7.7"
-compose = "1.6.7"
-kotlinx-coroutines-android = "1.8.0"
-libcrypto = "1.2.0"
+
 # Plugins
 android-application = "8.4.0"
 jetbrains-kotlin-android = "1.9.23"
 nexus-publish = "2.0.0"
 
 [libraries]
-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "androidx-compose-compiler" }
-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "androidx-compose-runtime" }
+compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler" }
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidx-material3" }
-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose-material3" }
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 #compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-ui" }
 compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
@@ -34,7 +37,7 @@ compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidx-annotation" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
 
-kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-android" }
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 libcrypto = { module = "dev.medzik:libcrypto", version.ref = "libcrypto" }
 
 test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso-core" }

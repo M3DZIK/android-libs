@@ -15,7 +15,7 @@ compose = "1.6.7"
 kotlinx-coroutines-android = "1.8.0"
 libcrypto = "1.2.0"
 # Plugins
-android-application = "8.3.2"
+android-application = "8.4.0"
 jetbrains-kotlin-android = "1.9.23"
 nexus-publish = "2.0.0"
 

@@ -3,7 +3,7 @@ android-sdk-min = "24"
 android-sdk-compile = "34"
 
 compose = "1.6.7"
-compose-compiler = "1.5.13"
+compose-compiler = "1.5.14"
 compose-material3 = "1.2.1"
 compose-navigation = "2.7.7"
 
@@ -19,7 +19,7 @@ androidx-junit = "1.1.5"
 
 # Plugins
 android-application = "8.4.0"
-jetbrains-kotlin-android = "1.9.23"
+jetbrains-kotlin-android = "1.9.24"
 nexus-publish = "2.0.0"
 
 [libraries]

@@ -18,7 +18,7 @@ androidx-espresso-core = "3.5.1"
 androidx-junit = "1.1.5"
 
 # Plugins
-android-application = "8.4.0"
+android-application = "8.2.0"
 jetbrains-kotlin-android = "1.9.24"
 nexus-publish = "2.0.0"
 

@@ -19,7 +19,7 @@ androidx-junit = "1.1.5"
 
 # Plugins
 android-application = "8.2.0"
-jetbrains-kotlin-android = "1.9.24"
+jetbrains-kotlin-android = "2.0.0"
 nexus-publish = "2.0.0"
 
 [libraries]

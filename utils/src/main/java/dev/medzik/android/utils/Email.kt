@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.medzik.android.utils
 
 import android.app.Activity

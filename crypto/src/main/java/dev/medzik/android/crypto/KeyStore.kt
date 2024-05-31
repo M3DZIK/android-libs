@@ -86,12 +86,7 @@ object KeyStore {
     /**
      * Deletes the secret key with the given [alias] from the Android KeyStore.
      */
-    fun deleteKey(alias: KeyStoreAlias) = deleteKey(alias.name)
-
-    /**
-     * Deletes the secret key with the given [alias] from the Android KeyStore.
-     */
-    fun deleteKey(alias: String) = getKeyStore().deleteEntry(alias)
+    fun deleteKey(alias: KeyStoreAlias) = getKeyStore().deleteEntry(alias.name)
 
     private fun createEmptyCipher(): Cipher = Cipher.getInstance(
         KeyProperties.KEY_ALGORITHM_AES + "/" +

@@ -1,75 +1,94 @@
 package dev.medzik.android.crypto
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.stringPreferencesKey
-import dev.medzik.android.crypto.DataStore.delete
-import dev.medzik.android.crypto.DataStore.read
-import dev.medzik.android.crypto.DataStore.write
+import androidx.datastore.core.Serializer
 import dev.medzik.libcrypto.Hex
+import java.io.*
+import java.nio.charset.StandardCharsets
 
 /**
- * Utility class for storing encrypted data in the DataStore.
+ * Interface representing an encrypted data store.
+ *
+ * This interface should be implemented by any class that needs to be stored encoded in a data store.
+ * It serves as a contract for the classes that will be serialized and deserialized using the
+ * [EncryptedDataStoreSerializer].
+ *
+ * @see EncryptedDataStoreSerializer
  */
-object EncryptedDataStore {
-    /**
-     * Reads and decrypts the encrypted value for the given key from the DataStore.
-     *
-     * @param keyStoreAlias alias from the KeyStore
-     * @param preferenceKey preference key in the DataStore
-     * @return decrypted value stored under the specified encrypted key, or null if not found
-     */
-    suspend fun DataStore<Preferences>.readEncryptedKey(
-        keyStoreAlias: KeyStoreAlias,
-        preferenceKey: String
-    ): ByteArray? {
-        val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
+interface EncryptedDataStore
 
-        // read cipher text from datastore
-        val cipherTextWithIV = read(cipherTextStore) ?: return null
+/**
+ * Interface representing a serializer for encrypted data store.
+ *
+ * This serializer serializes and deserializes [EncryptedDataStore] objects.
+ *
+ * @See EncryptedDataStore
+ */
+interface EncryptedDataStoreSerializer<T: EncryptedDataStore> : Serializer<T> {
+    /**
+     * The alias of the key in the KeyStore to be used for encryption and decryption.
+     */
+    val keyStoreAlias: KeyStoreAlias
+
+    /**
+     * Encodes the given [EncryptedDataStore] instance into a string.
+     *
+     * @param t the instance to be encoded
+     * @return The encoded string.
+     */
+    fun encode(t: T): String
+
+    /**
+     * Decodes the given string into an [EncryptedDataStore] instance.
+     *
+     * @param str the string to be decoded
+     * @return The decoded [EncryptedDataStore] instance.
+     */
+    fun decode(str: String): T
+
+    /**
+     * Reads and decrypts the [EncryptedDataStore] from data store.
+     */
+    override suspend fun readFrom(input: InputStream): T {
+        // read string from InputStream
+        val cipherTextWithIVBuilder = StringBuilder()
+        BufferedReader(InputStreamReader(input, StandardCharsets.UTF_8)).use { reader ->
+            var c: Int
+            while ((reader.read().also { c = it }) != -1) {
+                cipherTextWithIVBuilder.append(c.toChar())
+            }
+        }
 
         // initialization vector length in hex string
         val ivLength = 12 * 2
 
         // extract IV and Cipher Text from hex string
-        val iv = cipherTextWithIV.substring(0, ivLength)
-        val cipherText = cipherTextWithIV.substring(ivLength)
+        val iv = cipherTextWithIVBuilder.substring(0, ivLength)
+        val cipherText = cipherTextWithIVBuilder.substring(ivLength)
 
         // decrypt cipher text
         val cipher = KeyStore.initForDecryption(keyStoreAlias, Hex.decode(iv), false)
-        return KeyStore.decrypt(cipher, cipherText)
+        val decrypted = KeyStore.decrypt(cipher, cipherText)
+
+        return decode(String(decrypted))
     }
 
     /**
-     * Encrypts and writes the encrypted value to the DataStore.
-     *
-     * @param keyStoreAlias alias from the KeyStore
-     * @param preferenceKey preference key in the DataStore
-     * @param value The value to store.
+     * Encrypts and writes the [EncryptedDataStore] to data store.
      */
-    suspend fun DataStore<Preferences>.writeEncryptedKey(
-        keyStoreAlias: KeyStoreAlias,
-        preferenceKey: String,
-        value: ByteArray
+    override suspend fun writeTo(
+        t: T,
+        output: OutputStream
     ) {
-        val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
+        val encoded = encode(t)
 
-        // encrypt value
         val cipher = KeyStore.initForEncryption(keyStoreAlias, false)
-        val cipherData = KeyStore.encrypt(cipher, value)
+        val cipherData = KeyStore.encrypt(cipher, encoded.toByteArray())
 
-        // write encrypted value to datastore
         val cipherText = cipherData.initializationVector + cipherData.cipherText
-        write(cipherTextStore, cipherText)
-    }
 
-    /**
-     * Deletes the encrypted value for the given key from the DataStore.
-     *
-     * @param preferenceKey preference key in the DataStore
-     */
-    suspend fun DataStore<Preferences>.deleteEncryptedKey(preferenceKey: String) {
-        val cipherTextStore = stringPreferencesKey("$preferenceKey/encrypted")
-        delete(cipherTextStore)
+        // write string to OutputStream
+        OutputStreamWriter(output, StandardCharsets.UTF_8).use { writer ->
+            writer.write(cipherText)
+        }
     }
 }

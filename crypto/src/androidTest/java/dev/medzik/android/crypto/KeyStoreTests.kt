@@ -2,7 +2,7 @@ package dev.medzik.android.crypto
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.medzik.libcrypto.Hex
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -21,12 +21,11 @@ class KeyStoreTests {
         val encryptedData = KeyStore.encrypt(cipherEnc, clearText.toByteArray())
 
         // decrypt
-        val cipherDec =
-            KeyStore.initForDecryption(
-                KeyAlias.TEST_KEY,
-                Hex.decode(encryptedData.initializationVector),
-                false
-            )
+        val cipherDec = KeyStore.initForDecryption(
+            KeyAlias.TEST_KEY,
+            Hex.decode(encryptedData.initializationVector),
+            false
+        )
         val decryptedBytes = KeyStore.decrypt(cipherDec, encryptedData.cipherText)
 
         assertEquals(clearText, String(decryptedBytes))

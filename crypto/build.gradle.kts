@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -28,9 +29,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.datastore.preferences)
+    implementation(libs.androidx.datastore)
     implementation(libs.libcrypto)
 
+    androidTestImplementation(libs.kotlinx.serialization.json)
     androidTestImplementation(libs.test.junit)
     androidTestImplementation(libs.test.espresso.core)
 }

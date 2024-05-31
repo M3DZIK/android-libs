@@ -1,4 +1,4 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.icons
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack

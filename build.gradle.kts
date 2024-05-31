@@ -10,15 +10,6 @@ plugins {
     alias(libs.plugins.nexus.publish)
 }
 
-allprojects {
-    // fix task (current target is 1.8) and 'kspDebugKotlin' task (current target is 17) jvm target compatibility should be set to the same Java version.
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
-    }
-}
-
 nexusPublishing {
     this.repositories {
         sonatype {

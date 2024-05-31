@@ -1,22 +1,12 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.ui
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,29 +16,32 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberBottomSheetState(): BottomSheetState {
-    val sheetState =
-        SheetState(
-            skipPartiallyExpanded = true,
-            density = LocalDensity.current
-        )
+    val sheetState = SheetState(
+        skipPartiallyExpanded = true,
+        density = LocalDensity.current
+    )
 
     return remember { BottomSheetState(sheetState) }
 }
 
-/** A visibility controller for a bottom sheet */
+/**
+ * A visibility controller for a bottom sheet
+ */
 @OptIn(ExperimentalMaterial3Api::class)
-class BottomSheetState(
-    internal val sheetState: SheetState
-) {
+class BottomSheetState(internal val sheetState: SheetState) {
     internal var expanded by mutableStateOf(false)
 
-    /** Show the bottom sheet. */
+    /**
+     * Hide the bottom sheet.
+     */
     suspend fun hide() {
         sheetState.hide()
         expanded = false
     }
 
-    /** Show the bottom sheet. */
+    /**
+     * Show the bottom sheet.
+     */
     fun show() {
         expanded = true
     }

@@ -1,4 +1,4 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.ui
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

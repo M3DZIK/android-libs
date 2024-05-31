@@ -1,4 +1,4 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import dev.medzik.android.components.rememberMutableBoolean
 
 /**
  * Button with an option to show a loading animation.

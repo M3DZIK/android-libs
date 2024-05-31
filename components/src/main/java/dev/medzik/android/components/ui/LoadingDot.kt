@@ -1,4 +1,4 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

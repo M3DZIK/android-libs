@@ -8,8 +8,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class KeyStoreTests {
-    enum class KeyAlias : KeyStoreAlias {
-        TEST_KEY
+    object TestKeyAlias : KeyStoreAlias {
+        override val name = "test_key"
     }
 
     @Test
@@ -17,12 +17,12 @@ class KeyStoreTests {
         val clearText = "Hello World!"
 
         // encrypt
-        val cipherEnc = KeyStore.initForEncryption(KeyAlias.TEST_KEY, false)
+        val cipherEnc = KeyStore.initForEncryption(TestKeyAlias, false)
         val encryptedData = KeyStore.encrypt(cipherEnc, clearText.toByteArray())
 
         // decrypt
         val cipherDec = KeyStore.initForDecryption(
-            KeyAlias.TEST_KEY,
+            TestKeyAlias,
             Hex.decode(encryptedData.initializationVector),
             false
         )
@@ -30,6 +30,6 @@ class KeyStoreTests {
 
         assertEquals(clearText, String(decryptedBytes))
 
-        KeyStore.deleteKey(KeyAlias.TEST_KEY)
+        KeyStore.deleteKey(TestKeyAlias)
     }
 }

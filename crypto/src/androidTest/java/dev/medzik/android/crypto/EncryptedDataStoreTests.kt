@@ -22,7 +22,7 @@ class EncryptedDataStoreTests {
     ) : EncryptedDataStore
 
     object SecretsStoreSerializer : EncryptedDataStoreSerializer<SecretsStore> {
-        override val keyStoreAlias = KeyAlias.TEST_DATASTORE_ENCRYPTED
+        override val keyStoreAlias = DataStoreKeyAlias
         override val defaultValue = SecretsStore("")
 
         override fun encode(t: SecretsStore): String {
@@ -39,8 +39,8 @@ class EncryptedDataStoreTests {
         serializer = SecretsStoreSerializer
     )
 
-    enum class KeyAlias : KeyStoreAlias {
-        TEST_DATASTORE_ENCRYPTED
+    object DataStoreKeyAlias : KeyStoreAlias {
+        override val name = "encrypted_datastore"
     }
 
     @Test

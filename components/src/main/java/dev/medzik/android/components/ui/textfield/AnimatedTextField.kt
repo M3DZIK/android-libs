@@ -115,9 +115,9 @@ fun AnimatedTextField(
                     ) {
                         leading()
                     }
+
                     Spacer(
-                        modifier = Modifier
-                            .width(16.dp),
+                        modifier = Modifier.width(16.dp),
                     )
                 }
 
@@ -127,7 +127,7 @@ fun AnimatedTextField(
                     val focused = hasFocus || value.value.isNotEmpty()
 
                     TextFieldLabelLayout(
-                        modifier = Modifier.heightIn(min = 42.dp),
+                        modifier = Modifier.heightIn(min = 46.dp),
                         expanded = focused,
                     ) {
                         if (label != null) {
@@ -303,6 +303,11 @@ fun AnimatedTextFieldPreview() {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
+            AnimatedTextField(
+                value = value,
+                label = "Empty TextField"
+            )
+
             AnimatedTextField(
                 value = value,
                 label = "Label",

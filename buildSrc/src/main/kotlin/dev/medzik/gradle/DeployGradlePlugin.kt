@@ -3,7 +3,13 @@ import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.TaskProvider
 import org.gradle.api.tasks.bundling.Jar
-import org.gradle.kotlin.dsl.*
+import org.gradle.kotlin.dsl.assign
+import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.getValue
+import org.gradle.kotlin.dsl.getting
+import org.gradle.kotlin.dsl.provideDelegate
+import org.gradle.kotlin.dsl.registering
 import org.gradle.plugins.signing.SigningExtension
 
 private fun Project.publishing(): PublishingExtension {
@@ -25,7 +31,7 @@ fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
         publications {
             create<MavenPublication>("mavenJava") {
                 groupId = "dev.medzik.android"
-                version = "1.4.0"
+                version = "1.5.0"
 
                 configuration()
 

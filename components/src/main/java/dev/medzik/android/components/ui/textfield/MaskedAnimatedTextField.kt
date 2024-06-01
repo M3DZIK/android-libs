@@ -1,6 +1,7 @@
 package dev.medzik.android.components.ui.textfield
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.text.KeyboardActions
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
+import dev.medzik.android.components.colorizePasswordTransformation
 import dev.medzik.android.components.icons.VisibilityIcon
 import dev.medzik.android.components.rememberMutableBoolean
 
@@ -32,6 +34,7 @@ fun MaskedAnimatedTextField(
     disabled: Boolean = false,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
+    visibilityVisualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
@@ -71,7 +74,7 @@ fun MaskedAnimatedTextField(
             }
         },
         visualTransformation = if (visibility) {
-            VisualTransformation.None
+            visibilityVisualTransformation
         } else {
             PasswordVisualTransformation()
         },
@@ -83,11 +86,21 @@ fun MaskedAnimatedTextField(
 @Composable
 fun MaskedAnimatedTextFieldPreview() {
     MaterialTheme {
-        MaskedAnimatedTextField(
-            value = TextFieldValue(
-                value = "masked text",
-                editable = false
+        Column {
+            MaskedAnimatedTextField(
+                value = TextFieldValue(
+                    value = "masked text",
+                    editable = false
+                )
             )
-        )
+
+            MaskedAnimatedTextField(
+                value = TextFieldValue(
+                    value = "Password123!O0",
+                    editable = false
+                ),
+                visibilityVisualTransformation = colorizePasswordTransformation()
+            )
+        }
     }
 }

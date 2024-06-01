@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
 import dev.medzik.android.components.rememberMutableString
@@ -30,6 +31,7 @@ fun PasswordAnimatedTextField(
     disabled: Boolean = false,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
+    visibleVisualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -53,6 +55,7 @@ fun PasswordAnimatedTextField(
         disabled = disabled,
         readOnly = readOnly,
         textStyle = textStyle,
+        visibilityVisualTransformation = visibleVisualTransformation,
         keyboardOptions = keyboardOptions.copy(
             autoCorrect = false,
             keyboardType = KeyboardType.Password,

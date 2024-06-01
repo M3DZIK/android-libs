@@ -125,7 +125,7 @@ fun AnimatedTextField(
                     val focused = hasFocus || value.value.isNotEmpty()
 
                     TextFieldLabelLayout(
-                        modifier = Modifier.heightIn(min = 46.dp),
+                        modifier = Modifier.heightIn(min = 50.dp),
                         expanded = focused
                     ) {
                         if (label != null) {

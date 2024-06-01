@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -224,15 +225,16 @@ fun AnimatedTextField(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Spacer(
-                            modifier = Modifier.width(8.dp),
+                            modifier = Modifier.width(4.dp)
                         )
 
                         VerticalDivider(
                             modifier = Modifier.height(24.dp),
+                            color = LocalContentColor.current.combineAlpha(0.24f)
                         )
 
                         Spacer(
-                            modifier = Modifier.width(8.dp),
+                            modifier = Modifier.width(4.dp)
                         )
 
                         IconButton(

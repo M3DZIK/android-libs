@@ -5,24 +5,22 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Password
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
-import dev.medzik.android.components.icons.VisibilityIcon
-import dev.medzik.android.components.rememberMutableBoolean
+import dev.medzik.android.components.rememberMutableString
 
 @Composable
-fun MaskedAnimatedTextField(
+fun PasswordAnimatedTextField(
     modifier: Modifier = Modifier,
     fieldModifier: Modifier = Modifier,
     boxModifier: Modifier = Modifier,
@@ -34,16 +32,17 @@ fun MaskedAnimatedTextField(
     textStyle: TextStyle = LocalTextStyle.current,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    singleLine: Boolean = false,
-    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    leading: (@Composable RowScope.() -> Unit)? = null,
+    leading: (@Composable RowScope.() -> Unit)? = {
+        Icon(
+            imageVector = Icons.Default.Password,
+            null
+        )
+    },
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null
 ) {
-    var visibility by rememberMutableBoolean()
-
-    AnimatedTextField(
+    MaskedAnimatedTextField(
         modifier = modifier,
         fieldModifier = fieldModifier,
         boxModifier = boxModifier,
@@ -53,38 +52,29 @@ fun MaskedAnimatedTextField(
         disabled = disabled,
         readOnly = readOnly,
         textStyle = textStyle,
-        keyboardOptions = keyboardOptions,
+        keyboardOptions = keyboardOptions.copy(
+            autoCorrect = false,
+            keyboardType = KeyboardType.Password,
+        ),
         keyboardActions = keyboardActions,
-        singleLine = singleLine,
-        maxLines = maxLines,
+        singleLine = true,
+        maxLines = 1,
         interactionSource = interactionSource,
         leading = leading,
-        trailing = {
-            IconButton(onClick = { visibility = !visibility }) {
-                VisibilityIcon(visibility = visibility)
-            }
-
-            if (trailing != null) {
-                trailing()
-            }
-        },
-        visualTransformation = if (visibility) {
-            VisualTransformation.None
-        } else {
-            PasswordVisualTransformation()
-        },
+        trailing = trailing,
         content = content
     )
 }
 
 @Preview
 @Composable
-fun MaskedAnimatedTextFieldPreview() {
+fun PasswordAnimatedTextFieldPreview() {
+    val password = rememberMutableString()
+
     MaterialTheme {
-        MaskedAnimatedTextField(
-            value = TextFieldValue(
-                value = "masked text",
-                editable = false
+        PasswordAnimatedTextField(
+            value = TextFieldValue.fromMutableState(
+                state = password
             )
         )
     }

@@ -7,6 +7,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -141,4 +144,16 @@ private fun colorizePassword(
 @Composable
 fun ColorizePasswordPreview() {
     Text(colorizePassword("Qwerty123!", contentColor = MaterialTheme.colorScheme.onBackground))
+}
+
+@Composable
+fun colorizePasswordTransformation(): VisualTransformation {
+    val onBackgroundColor = MaterialTheme.colorScheme.onBackground
+
+    return VisualTransformation { text ->
+        TransformedText(
+            text = colorizePassword(text.text, contentColor = onBackgroundColor),
+            OffsetMapping.Identity
+        )
+    }
 }

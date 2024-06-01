@@ -61,9 +61,6 @@ fun AnimatedTextField(
     placeholder: String? = null,
     label: String? = null,
     disabled: Boolean = false,
-    leading: (@Composable RowScope.() -> Unit)? = null,
-    trailing: (@Composable RowScope.() -> Unit)? = null,
-    content: (@Composable ColumnScope.() -> Unit)? = null,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
     visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -72,6 +69,9 @@ fun AnimatedTextField(
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    leading: (@Composable RowScope.() -> Unit)? = null,
+    trailing: (@Composable RowScope.() -> Unit)? = null,
+    content: (@Composable ColumnScope.() -> Unit)? = null
 ) {
     val isError = value.error != null
 

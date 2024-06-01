@@ -280,7 +280,7 @@ private fun AnimatedTextFieldSurface(
             .fillMaxWidth()
             .border(1.dp, borderColor, shape),
         shape = shape,
-        color = MaterialTheme.colorScheme.surfaceVariant,
+        color = MaterialTheme.colorScheme.surfaceVariant
     ) {
         content()
     }

@@ -56,6 +56,7 @@ import dev.medzik.android.components.ui.ExpandedIfNotEmpty
 fun AnimatedTextField(
     modifier: Modifier = Modifier,
     fieldModifier: Modifier = Modifier,
+    boxModifier: Modifier = Modifier,
     value: TextFieldValue,
     placeholder: String? = null,
     label: String? = null,
@@ -142,6 +143,7 @@ fun AnimatedTextField(
                         val finalPlaceholder = placeholder ?: value.hint
                         PlainTextField(
                             modifier = fieldModifier.fillMaxWidth(),
+                            boxModifier = boxModifier,
                             value = value.value,
                             onValueChange = value.onChange,
                             placeholder = if (finalPlaceholder != null) {

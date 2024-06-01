@@ -37,6 +37,7 @@ fun MaskedAnimatedTextField(
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    clearButton: Boolean = true,
     leading: (@Composable RowScope.() -> Unit)? = null,
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null
@@ -59,6 +60,7 @@ fun MaskedAnimatedTextField(
         maxLines = maxLines,
         interactionSource = interactionSource,
         leading = leading,
+        clearButton = clearButton,
         trailing = {
             IconButton(onClick = { visibility = !visibility }) {
                 VisibilityIcon(visibility = visibility)

@@ -33,6 +33,7 @@ fun PasswordAnimatedTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    clearButton: Boolean = true,
     leading: (@Composable RowScope.() -> Unit)? = {
         Icon(
             imageVector = Icons.Default.Password,
@@ -60,6 +61,7 @@ fun PasswordAnimatedTextField(
         singleLine = true,
         maxLines = 1,
         interactionSource = interactionSource,
+        clearButton = clearButton,
         leading = leading,
         trailing = trailing,
         content = content

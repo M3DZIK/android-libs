@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -22,12 +23,14 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Password
+import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -51,6 +54,7 @@ import dev.medzik.android.components.icons.VisibilityIcon
 import dev.medzik.android.components.rememberMutableBoolean
 import dev.medzik.android.components.rememberMutableString
 import dev.medzik.android.components.ui.ExpandedIfNotEmpty
+import dev.medzik.android.components.ui.ExpandedIfNotEmptyRow
 
 @Composable
 fun AnimatedTextField(
@@ -69,6 +73,7 @@ fun AnimatedTextField(
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    clearButton: Boolean = false,
     leading: (@Composable RowScope.() -> Unit)? = null,
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null
@@ -211,6 +216,36 @@ fun AnimatedTextField(
                         trailing()
                     }
                 }
+
+                ExpandedIfNotEmptyRow(
+                    value = Unit.takeIf { value.value.isNotEmpty() && hasFocus && clearButton }
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Spacer(
+                            modifier = Modifier.width(8.dp),
+                        )
+
+                        VerticalDivider(
+                            modifier = Modifier.height(24.dp),
+                        )
+
+                        Spacer(
+                            modifier = Modifier.width(8.dp),
+                        )
+
+                        IconButton(
+                            enabled = value.editable,
+                            onClick = { value.onChange("") }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.Clear,
+                                contentDescription = null
+                            )
+                        }
+                    }
+                }
             }
         }
     }
@@ -277,6 +312,7 @@ fun AnimatedTextFieldPreview() {
                         null
                     )
                 },
+                clearButton = true,
                 trailing = {
                     IconButton(onClick = { visibility = !visibility }) {
                         VisibilityIcon(visibility = visibility)

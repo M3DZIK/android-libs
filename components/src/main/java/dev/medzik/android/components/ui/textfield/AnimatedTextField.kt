@@ -84,20 +84,18 @@ fun AnimatedTextField(
     var hasFocus by rememberMutableBoolean()
 
     AnimatedTextFieldSurface(
-        modifier = modifier
-            .onFocusChanged { hasFocus = it.hasFocus },
+        modifier = modifier.onFocusChanged { hasFocus = it.hasFocus },
         isError = isError,
         isFocused = hasFocus
     ) {
         Column {
             Row(
-                modifier = Modifier
-                    .padding(
-                        start = 16.dp,
-                        end = 8.dp,
-                        top = 8.dp,
-                        bottom = 8.dp,
-                    ),
+                modifier = Modifier.padding(
+                    start = 16.dp,
+                    end = 8.dp,
+                    top = 8.dp,
+                    bottom = 8.dp,
+                ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val disabledAlphaTarget = if (disabled) DisabledAlpha else NormalAlpha
@@ -108,17 +106,16 @@ fun AnimatedTextField(
 
                 if (leading != null) {
                     Row(
-                        modifier = Modifier
-                            .graphicsLayer {
-                                alpha = disabledAlphaState.value
-                            },
-                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.graphicsLayer {
+                            alpha = disabledAlphaState.value
+                        },
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         leading()
                     }
 
                     Spacer(
-                        modifier = Modifier.width(16.dp),
+                        modifier = Modifier.width(16.dp)
                     )
                 }
 
@@ -129,7 +126,7 @@ fun AnimatedTextField(
 
                     TextFieldLabelLayout(
                         modifier = Modifier.heightIn(min = 46.dp),
-                        expanded = focused,
+                        expanded = focused
                     ) {
                         if (label != null) {
                             TextFieldLabel(
@@ -182,17 +179,14 @@ fun AnimatedTextField(
                     }
 
                     Column(
-                        modifier = Modifier
-                            .padding(
-                                end = 8.dp,
-                            ),
+                        modifier = Modifier.padding(end = 8.dp)
                     ) {
                         ExpandedIfNotEmpty(
-                            value = value.error ?: value.valueLabel,
+                            value = value.error ?: value.valueLabel
                         ) {
                             AnimatedTextFieldBadge(
                                 error = it as? String,
-                                badge = it as? TextFieldValue.ValueLabel,
+                                badge = it as? TextFieldValue.ValueLabel
                             )
                         }
 
@@ -204,15 +198,14 @@ fun AnimatedTextField(
 
                 if (trailing != null) {
                     Spacer(
-                        modifier = Modifier
-                            .width(8.dp),
+                        modifier = Modifier.width(8.dp)
                     )
+
                     Row(
-                        modifier = Modifier
-                            .graphicsLayer {
-                                alpha = disabledAlphaState.value
-                            },
-                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.graphicsLayer {
+                            alpha = disabledAlphaState.value
+                        },
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         trailing()
                     }

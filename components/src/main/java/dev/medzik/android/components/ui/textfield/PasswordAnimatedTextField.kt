@@ -29,7 +29,6 @@ fun PasswordAnimatedTextField(
     placeholder: String? = null,
     label: String? = null,
     disabled: Boolean = false,
-    readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
     visibleVisualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -53,7 +52,6 @@ fun PasswordAnimatedTextField(
         placeholder = placeholder,
         label = label,
         disabled = disabled,
-        readOnly = readOnly,
         textStyle = textStyle,
         visibilityVisualTransformation = visibleVisualTransformation,
         keyboardOptions = keyboardOptions.copy(

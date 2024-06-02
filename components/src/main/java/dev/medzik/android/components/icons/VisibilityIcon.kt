@@ -25,8 +25,8 @@ fun VisibilityIcon(
     visibility: Boolean
 ) {
     val iconVector = when (visibility) {
-        true -> Icons.Default.Visibility
-        false -> Icons.Default.VisibilityOff
+        true -> Icons.Default.VisibilityOff
+        false -> Icons.Default.Visibility
     }
 
     Crossfade(

@@ -24,14 +24,29 @@ private fun ColorScheme.buildContainerColor(hue: Float): Color {
         .compositeOver(backgroundColor)
 }
 
+/**
+ * Returns the container color for success items.
+ *
+ * The color is typically used for backgrounds for a success badge.
+ */
 val ColorScheme.successContainer: Color
     @Composable
     get() = buildContainerColor(SUCCESS)
 
+/**
+ * Returns the container color for info items.
+ *
+ * The color is typically used for backgrounds for a info badge.
+ */
 val ColorScheme.infoContainer: Color
     @Composable
     get() = buildContainerColor(INFO)
 
+/**
+ * Returns the container color for warning items.
+ *
+ * The color is typically used for backgrounds for a warning badge.
+ */
 val ColorScheme.warningContainer: Color
     @Composable
     get() = buildContainerColor(WARNING)

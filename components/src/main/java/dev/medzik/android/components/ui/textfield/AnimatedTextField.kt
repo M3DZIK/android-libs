@@ -66,7 +66,6 @@ fun AnimatedTextField(
     placeholder: String? = null,
     label: String? = null,
     disabled: Boolean = false,
-    readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -165,8 +164,8 @@ fun AnimatedTextField(
                             } else {
                                 null
                             },
-                            enabled = value.editable,
-                            readOnly = readOnly,
+                            enabled = !disabled,
+                            readOnly = !value.editable,
                             textStyle = textStyle,
                             isError = isError,
                             visualTransformation = visualTransformation,

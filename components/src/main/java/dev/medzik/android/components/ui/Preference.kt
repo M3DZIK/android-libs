@@ -1,7 +1,15 @@
 package dev.medzik.android.components.ui
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -65,7 +73,10 @@ fun PreferenceEntry(
                 onClick = onClick
             )
             .alpha(if (isEnabled) 1f else 0.5f)
-            .padding(vertical = 16.dp, horizontal = 16.dp)
+            .padding(
+                vertical = 16.dp,
+                horizontal = 16.dp
+            )
     ) {
         if (icon != null) {
             Box(
@@ -79,7 +90,9 @@ fun PreferenceEntry(
 
         Column(
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
+                .heightIn(min = 50.dp)
         ) {
             Text(
                 text = title,

@@ -199,7 +199,7 @@ fun PropertyPreference(
 
 @Preview(showBackground = true)
 @Composable
-fun PreferencesPreview() {
+private fun PreferencesPreview() {
     Column {
         PreferenceGroupTitle(
             title = "First Group"

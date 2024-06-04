@@ -35,7 +35,7 @@ fun dottedPassword(
 
 @Preview(showBackground = true)
 @Composable
-fun DottedPasswordPreview() {
+private fun DottedPasswordPreview() {
     Text(dottedPassword())
 }
 
@@ -142,7 +142,7 @@ private fun colorizePassword(
 
 @Preview(showBackground = true)
 @Composable
-fun ColorizePasswordPreview() {
+private fun ColorizePasswordPreview() {
     Text(colorizePassword("Qwerty123!", contentColor = MaterialTheme.colorScheme.onBackground))
 }
 

@@ -82,7 +82,7 @@ fun MaskedAnimatedTextField(
 
 @Preview
 @Composable
-fun MaskedAnimatedTextFieldPreview() {
+private fun MaskedAnimatedTextFieldPreview() {
     MaterialTheme {
         Column {
             MaskedAnimatedTextField(

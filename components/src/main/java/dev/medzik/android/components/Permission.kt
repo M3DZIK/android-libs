@@ -50,7 +50,7 @@ fun Permission(
 
 @Preview
 @Composable
-fun PermissionPreview() {
+private fun PermissionPreview() {
     Permission(
         permission = Manifest.permission.CAMERA,
         onDenied = { requestPermission ->

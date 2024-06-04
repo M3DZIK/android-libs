@@ -3,7 +3,12 @@ package dev.medzik.android.components.ui
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material3.*
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -81,7 +86,7 @@ private enum class ExampleEnum {
 
 @Preview(showBackground = true)
 @Composable
-fun ComboBoxDropdownPreview() {
+private fun ComboBoxDropdownPreview() {
     var value by rememberMutable(ExampleEnum.FIRST)
 
     ComboBoxDropdown(

@@ -56,7 +56,7 @@ fun TopAppBarMultiColor(
 
 @Preview
 @Composable
-fun TopAppBarMultiColorPreview() {
+private fun TopAppBarMultiColorPreview() {
     TopAppBarMultiColor(
         firstText = "First",
         secondText = "Second",

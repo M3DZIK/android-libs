@@ -33,7 +33,7 @@ fun LoadingDot(
 
 @Preview
 @Composable
-fun LoadingDotPreview() {
+private fun LoadingDotPreview() {
     LoadingDot(
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier

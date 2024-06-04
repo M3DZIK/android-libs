@@ -71,7 +71,7 @@ fun PasswordAnimatedTextField(
 
 @Preview
 @Composable
-fun PasswordAnimatedTextFieldPreview() {
+private fun PasswordAnimatedTextFieldPreview() {
     val password = rememberMutableString()
 
     MaterialTheme {

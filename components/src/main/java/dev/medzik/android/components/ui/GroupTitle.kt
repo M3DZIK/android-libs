@@ -27,7 +27,7 @@ fun GroupTitle(
 
 @Preview(showBackground = true)
 @Composable
-fun GroupTitlePreview() {
+private fun GroupTitlePreview() {
     GroupTitle(
         text = "Group Title"
     )

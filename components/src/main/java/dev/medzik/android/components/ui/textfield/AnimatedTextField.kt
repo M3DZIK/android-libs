@@ -282,7 +282,7 @@ private fun AnimatedTextFieldSurface(
 
 @Preview
 @Composable
-fun AnimatedTextFieldPreview() {
+private fun AnimatedTextFieldPreview() {
     val valueState = rememberMutableString()
 
     val value = TextFieldValue.fromMutableState(

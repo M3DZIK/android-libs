@@ -42,7 +42,7 @@ fun LoadingButton(
 
 @Preview(showBackground = true)
 @Composable
-fun LoadingButtonPreview() {
+private fun LoadingButtonPreview() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

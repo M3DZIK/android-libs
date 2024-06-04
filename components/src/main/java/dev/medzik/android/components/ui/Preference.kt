@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -227,6 +230,12 @@ fun PreferencesPreview() {
 
         PropertyPreference(
             title = "Property title",
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
+            },
             currentValue = currentItem,
             onClick = { state.show() }
         )
@@ -234,7 +243,7 @@ fun PreferencesPreview() {
         PickerDialog(
             state,
             title = "Picker Dialog",
-            propertyItems,
+            items = propertyItems,
             onSelected = {
                 currentItem = it
             }

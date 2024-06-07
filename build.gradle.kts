@@ -5,9 +5,22 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.dokka) apply false
     alias(libs.plugins.kotlin.serialization) apply false
 
     alias(libs.plugins.nexus.publish)
+}
+
+subprojects {
+    apply(plugin = "org.jetbrains.dokka")
+
+    tasks.register("deploy") {
+        dependsOn("publishToSonatype")
+    }
+}
+
+tasks.register("deploy") {
+    dependsOn("closeAndReleaseSonatypeStagingRepository")
 }
 
 nexusPublishing {

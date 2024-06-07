@@ -10,6 +10,7 @@ compose = "1.6.7"
 compose-material3 = "1.2.1"
 compose-navigation = "2.7.7"
 kotlin = "2.0.0"
+kotlin-dokka = "1.9.20"
 kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.6.3"
 libcrypto = "1.2.0"
@@ -38,5 +39,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin-dokka" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish" }

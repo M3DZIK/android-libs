@@ -1,3 +1,4 @@
+
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
@@ -7,7 +8,6 @@ import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getValue
-import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.registering
 import org.gradle.plugins.signing.SigningExtension
@@ -35,11 +35,10 @@ fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
 
                 configuration()
 
-                val dokkaHtml by project.tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
                 val javadocJar: TaskProvider<Jar> by project.tasks.registering(Jar::class) {
-                    dependsOn(dokkaHtml)
+                    dependsOn("dokkaHtml")
                     archiveClassifier.set("javadoc")
-                    from(dokkaHtml.outputDirectory)
+                    from("${project.projectDir}/build/dokka/html")
                 }
                 artifact(javadocJar)
 

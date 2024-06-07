@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowOutward
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.medzik.android.components.color.DisabledAlpha
 import dev.medzik.android.components.color.NormalAlpha
+import dev.medzik.android.components.ui.IconBox
 
 /**
  * Displays a basic preference entry.
@@ -125,10 +125,7 @@ private fun BasicPreferencePreview() {
             title = "Settings",
             onClick = {},
             leading = {
-                Icon(
-                    imageVector = Icons.Default.Settings,
-                    contentDescription = null
-                )
+                IconBox(imageVector = Icons.Default.Settings)
             }
         )
 
@@ -137,16 +134,10 @@ private fun BasicPreferencePreview() {
             subtitle = "Switch to settings screen",
             onClick = {},
             leading = {
-                Icon(
-                    imageVector = Icons.Default.Settings,
-                    contentDescription = null
-                )
+                IconBox(imageVector = Icons.Default.Settings)
             },
             trailing = {
-                Icon(
-                    imageVector = Icons.Default.ArrowOutward,
-                    contentDescription = null
-                )
+                IconBox(imageVector = Icons.Default.ArrowOutward)
             }
         )
     }

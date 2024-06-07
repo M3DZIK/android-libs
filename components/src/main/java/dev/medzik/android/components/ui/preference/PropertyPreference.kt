@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.medzik.android.components.rememberMutable
+import dev.medzik.android.components.ui.IconBox
 import dev.medzik.android.components.ui.PickerDialog
 import dev.medzik.android.components.ui.rememberDialogState
 
@@ -67,10 +67,7 @@ fun PropertyPreferencePreview() {
             title = "Property title",
             subtitle = "Property subtitle",
             leading = {
-                Icon(
-                    imageVector = Icons.Default.Lock,
-                    contentDescription = null
-                )
+                IconBox(imageVector = Icons.Default.Lock)
             },
             currentValue = currentItem,
             onClick = { state.show() }

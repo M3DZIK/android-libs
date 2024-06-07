@@ -24,7 +24,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.outlined.Clear
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
@@ -56,6 +55,7 @@ import dev.medzik.android.components.rememberMutableBoolean
 import dev.medzik.android.components.rememberMutableString
 import dev.medzik.android.components.ui.ExpandedIfNotEmpty
 import dev.medzik.android.components.ui.ExpandedIfNotEmptyRow
+import dev.medzik.android.components.ui.IconBox
 
 @Composable
 fun AnimatedTextField(
@@ -233,10 +233,7 @@ fun AnimatedTextField(
                             enabled = value.editable,
                             onClick = { value.onChange("") }
                         ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Clear,
-                                contentDescription = null
-                            )
+                            IconBox(imageVector = Icons.Outlined.Clear)
                         }
                     }
                 }
@@ -306,10 +303,7 @@ private fun AnimatedTextFieldPreview() {
                 value = value,
                 label = "Label",
                 leading = {
-                    Icon(
-                        imageVector = Icons.Default.Password,
-                        null
-                    )
+                    IconBox(imageVector = Icons.Default.Password)
                 },
                 clearButton = true,
                 trailing = {
@@ -339,10 +333,7 @@ private fun AnimatedTextFieldPreview() {
                 ),
                 label = "E-mail",
                 leading = {
-                    Icon(
-                        imageVector = Icons.Default.AccountCircle,
-                        null
-                    )
+                    IconBox(imageVector = Icons.Default.AccountCircle)
                 }
             )
 
@@ -357,16 +348,10 @@ private fun AnimatedTextFieldPreview() {
                 ),
                 label = "Label",
                 leading = {
-                    Icon(
-                        imageVector = Icons.Default.Info,
-                        null
-                    )
+                    IconBox(imageVector = Icons.Default.Info)
                 },
                 trailing = {
-                    Icon(
-                        imageVector = Icons.Default.Close,
-                        null
-                    )
+                    IconBox(imageVector = Icons.Default.Close)
                 },
                 disabled = true
             )

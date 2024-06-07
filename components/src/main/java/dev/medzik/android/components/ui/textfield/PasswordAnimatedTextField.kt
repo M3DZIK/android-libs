@@ -7,7 +7,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Password
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
 import dev.medzik.android.components.rememberMutableString
+import dev.medzik.android.components.ui.IconBox
 
 @Composable
 fun PasswordAnimatedTextField(
@@ -36,10 +36,7 @@ fun PasswordAnimatedTextField(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     clearButton: Boolean = true,
     leading: (@Composable RowScope.() -> Unit)? = {
-        Icon(
-            imageVector = Icons.Default.Password,
-            null
-        )
+        IconBox(imageVector = Icons.Default.Password)
     },
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null

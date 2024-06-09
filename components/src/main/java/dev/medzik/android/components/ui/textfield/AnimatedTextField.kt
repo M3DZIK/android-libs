@@ -83,7 +83,10 @@ fun AnimatedTextField(
     var hasFocus by rememberMutableBoolean()
 
     AnimatedTextFieldSurface(
-        modifier = modifier.onFocusChanged { hasFocus = it.hasFocus },
+        modifier = modifier.onFocusChanged {
+            // change focus state only if the value is editable
+            if (value.editable) hasFocus = it.hasFocus
+        },
         isError = isError,
         isFocused = hasFocus
     ) {

@@ -41,7 +41,7 @@ class RememberTests {
     @Test
     fun testRememberMutableString() {
         composeTestRule.setContent {
-            var value by rememberMutableString()
+            var value by rememberMutable("")
 
             Column {
                 Text(text = "Current Value: $value")
@@ -61,7 +61,7 @@ class RememberTests {
     @Test
     fun testRememberMutableBoolean() {
         composeTestRule.setContent {
-            var value by rememberMutableBoolean()
+            var value by rememberMutable(false)
 
             Column {
                 Text(text = "Current Value: $value")

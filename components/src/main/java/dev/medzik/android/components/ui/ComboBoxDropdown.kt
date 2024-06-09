@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.rememberMutable
-import dev.medzik.android.components.rememberMutableBoolean
 
 /**
  * Dropdown menu for selecting an enum value.
@@ -36,7 +35,7 @@ fun <T : Enum<T>> ComboBoxDropdown(
     onValueChange: (T) -> Unit,
     label: (@Composable () -> Unit)? = null
 ) {
-    var expanded by rememberMutableBoolean(false)
+    var expanded by rememberMutable(false)
 
     ExposedDropdownMenuBox(
         expanded = expanded,

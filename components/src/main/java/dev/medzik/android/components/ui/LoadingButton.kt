@@ -9,7 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.medzik.android.components.rememberMutableBoolean
+import dev.medzik.android.components.rememberMutable
 
 /**
  * Button with an option to show a loading animation.
@@ -46,7 +46,7 @@ private fun LoadingButtonPreview() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var loading by rememberMutableBoolean(false)
+        var loading by rememberMutable(false)
 
         LoadingButton(
             loading = loading,

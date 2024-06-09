@@ -30,7 +30,7 @@ fun Permission(
     onGranted: @Composable () -> Unit = {}
 ) {
     // check the initial state of permission, it may be already granted
-    var grantState by rememberMutableBoolean(
+    var grantState by rememberMutable(
         ContextCompat.checkSelfPermission(
             LocalContext.current,
             permission

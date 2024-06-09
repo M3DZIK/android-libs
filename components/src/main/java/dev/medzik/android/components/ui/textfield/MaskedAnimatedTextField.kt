@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
 import dev.medzik.android.components.colorizePasswordTransformation
 import dev.medzik.android.components.icons.VisibilityIcon
-import dev.medzik.android.components.rememberMutableBoolean
+import dev.medzik.android.components.rememberMutable
 
 @Composable
 fun MaskedAnimatedTextField(
@@ -44,7 +44,7 @@ fun MaskedAnimatedTextField(
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null
 ) {
-    var visibility by rememberMutableBoolean()
+    var visibility by rememberMutable(false)
 
     AnimatedTextField(
         modifier = modifier,

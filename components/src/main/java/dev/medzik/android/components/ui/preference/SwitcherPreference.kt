@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.medzik.android.components.rememberMutableBoolean
+import dev.medzik.android.components.rememberMutable
 
 /**
  * Displays a preference entry with a switcher.
@@ -79,7 +79,7 @@ fun SwitcherPreference(
 @Preview(showBackground = true)
 @Composable
 private fun SwitcherPreferencePreview() {
-    val checked = rememberMutableBoolean()
+    val checked = rememberMutable(false)
 
     Column {
         SwitcherPreference(

@@ -17,7 +17,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.components.TextFieldValue
-import dev.medzik.android.components.rememberMutableString
+import dev.medzik.android.components.rememberMutable
 import dev.medzik.android.components.ui.IconBox
 
 @Composable
@@ -69,7 +69,7 @@ fun PasswordAnimatedTextField(
 @Preview
 @Composable
 private fun PasswordAnimatedTextFieldPreview() {
-    val password = rememberMutableString()
+    val password = rememberMutable("")
 
     MaterialTheme {
         PasswordAnimatedTextField(

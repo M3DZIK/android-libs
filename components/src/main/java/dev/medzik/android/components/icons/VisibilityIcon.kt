@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.medzik.android.components.rememberMutableBoolean
+import dev.medzik.android.components.rememberMutable
 import dev.medzik.android.components.ui.IconBox
 
 /**
@@ -41,7 +41,7 @@ fun VisibilityIcon(
 @Preview
 @Composable
 fun VisibilityIconPreview() {
-    var visibility by rememberMutableBoolean()
+    var visibility by rememberMutable(false)
 
     VisibilityIcon(
         modifier = Modifier.clickable {

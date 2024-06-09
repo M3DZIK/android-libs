@@ -51,8 +51,7 @@ import dev.medzik.android.components.color.DisabledAlpha
 import dev.medzik.android.components.color.NormalAlpha
 import dev.medzik.android.components.color.combineAlpha
 import dev.medzik.android.components.icons.VisibilityIcon
-import dev.medzik.android.components.rememberMutableBoolean
-import dev.medzik.android.components.rememberMutableString
+import dev.medzik.android.components.rememberMutable
 import dev.medzik.android.components.ui.ExpandedIfNotEmpty
 import dev.medzik.android.components.ui.ExpandedIfNotEmptyRow
 import dev.medzik.android.components.ui.IconBox
@@ -80,7 +79,7 @@ fun AnimatedTextField(
 ) {
     val isError = value.error != null
 
-    var hasFocus by rememberMutableBoolean()
+    var hasFocus by rememberMutable(false)
 
     AnimatedTextFieldSurface(
         modifier = modifier.onFocusChanged {
@@ -283,7 +282,7 @@ private fun AnimatedTextFieldSurface(
 @Preview
 @Composable
 private fun AnimatedTextFieldPreview() {
-    val valueState = rememberMutableString()
+    val valueState = rememberMutable("")
 
     val value = TextFieldValue.fromMutableState(
         state = valueState,
@@ -291,7 +290,7 @@ private fun AnimatedTextFieldPreview() {
         error = if (valueState.value.length > 5) "Too long" else null
     )
 
-    var visibility by rememberMutableBoolean()
+    var visibility by rememberMutable(false)
 
     MaterialTheme {
         Column(

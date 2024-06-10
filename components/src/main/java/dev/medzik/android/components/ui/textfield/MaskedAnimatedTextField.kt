@@ -25,10 +25,10 @@ import dev.medzik.android.components.rememberMutable
 
 @Composable
 fun MaskedAnimatedTextField(
+    value: TextFieldValue,
     modifier: Modifier = Modifier,
     fieldModifier: Modifier = Modifier,
     boxModifier: Modifier = Modifier,
-    value: TextFieldValue,
     placeholder: String? = null,
     label: String? = null,
     disabled: Boolean = false,

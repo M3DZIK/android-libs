@@ -58,10 +58,10 @@ import dev.medzik.android.components.ui.IconBox
 
 @Composable
 fun AnimatedTextField(
+    value: TextFieldValue,
     modifier: Modifier = Modifier,
     fieldModifier: Modifier = Modifier,
     boxModifier: Modifier = Modifier,
-    value: TextFieldValue,
     placeholder: String? = null,
     label: String? = null,
     disabled: Boolean = false,

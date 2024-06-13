@@ -40,7 +40,7 @@ fun VisibilityIcon(
 
 @Preview
 @Composable
-fun VisibilityIconPreview() {
+private fun VisibilityIconPreview() {
     var visibility by rememberMutable(false)
 
     VisibilityIcon(

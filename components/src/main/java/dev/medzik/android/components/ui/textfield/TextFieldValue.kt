@@ -1,4 +1,4 @@
-package dev.medzik.android.components
+package dev.medzik.android.components.ui.textfield
 
 import androidx.compose.runtime.MutableState
 

@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.medzik.android.compose.rememberMutable
 import dev.medzik.android.compose.ui.IconBox
-import dev.medzik.android.compose.ui.PickerDialog
-import dev.medzik.android.compose.ui.rememberDialogState
+import dev.medzik.android.compose.ui.dialog.PickerDialog
+import dev.medzik.android.compose.ui.dialog.rememberDialogState
 
 /**
  * Displays a property preference.

@@ -17,6 +17,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android Utilities Library"
 
+include(":compose")
 include(":crypto")
-include(":components")
 include(":utils")

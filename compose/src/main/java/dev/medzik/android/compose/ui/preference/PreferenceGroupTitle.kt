@@ -18,5 +18,5 @@ fun PreferenceGroupTitle(
     modifier: Modifier = Modifier
 ) = GroupTitle(
     text = title,
-    modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+    modifier = modifier.padding(vertical = 4.dp, horizontal = 16.dp)
 )

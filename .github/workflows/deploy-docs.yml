@@ -23,17 +23,17 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Install Deps
-        run: npm ci
+        run: npm ci --prefix docs
 
       - name: Build Docs
         env:
           NODE_OPTIONS: --max_old_space_size=8192
         run: |-
-          npm run docs:build
-          > docs/.vuepress/dist/.nojekyll
+          npm run --prefix docs build
+          > docs/docs/.vuepress/dist/.nojekyll
 
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs/.vuepress/dist
+          folder: docs/docs/.vuepress/dist

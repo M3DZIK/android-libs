@@ -60,7 +60,7 @@ val ColorScheme.warningContainer: Color
 
 @Preview
 @Composable
-fun SuccessContainerPreview() {
+private fun SuccessContainerPreview() {
     Surface(
         color = MaterialTheme.colorScheme.successContainer,
         shape = MaterialTheme.shapes.large
@@ -73,7 +73,7 @@ fun SuccessContainerPreview() {
 
 @Preview
 @Composable
-fun InfoContainerPreview() {
+private fun InfoContainerPreview() {
     Surface(
         color = MaterialTheme.colorScheme.infoContainer,
         shape = MaterialTheme.shapes.large
@@ -86,7 +86,7 @@ fun InfoContainerPreview() {
 
 @Preview
 @Composable
-fun WarningContainerPreview() {
+private fun WarningContainerPreview() {
     Surface(
         color = MaterialTheme.colorScheme.warningContainer,
         shape = MaterialTheme.shapes.large

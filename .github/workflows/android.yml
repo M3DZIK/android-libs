@@ -2,17 +2,17 @@ name: Android Tests
 
 on:
   push:
-    branches:
-      - main
+    paths-ignore:
+      - "docs/**"
   pull_request:
+    paths-ignore:
+      - "docs/**"
   workflow_dispatch:
 
 jobs:
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     steps:
       - name: Checkout

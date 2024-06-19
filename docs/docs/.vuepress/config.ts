@@ -12,13 +12,21 @@ const sidebar: NavbarConfig = [
   {
     text: 'Compose',
     children: [
-      '/compose/introduction.md',
+//       '/compose/introduction.md',
       '/compose/colors.md',
       '/compose/permission.md',
       '/compose/remember.md',
       '/compose/ui.md'
     ]
-  }
+  },
+  {
+      text: 'Crypto',
+      children: [
+//         '/crypto/introduction.md',
+        '/crypto/keystore.md',
+        '/crypto/encrypted_datastore.md'
+      ]
+    }
 ]
 
 export default defineUserConfig({

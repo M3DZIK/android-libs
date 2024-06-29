@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import dev.medzik.android.compose.theme.spacing
 
 /**
  * Composable of a Basic dialog.
@@ -35,7 +35,7 @@ fun BaseDialog(
                 tonalElevation = AlertDialogDefaults.TonalElevation,
             ) {
                 Box(
-                    modifier = Modifier.padding(vertical = 24.dp)
+                    modifier = Modifier.padding(vertical = MaterialTheme.spacing.dialog)
                 ) {
                     content()
                 }
@@ -53,16 +53,10 @@ private fun BaseDialogPreview() {
     Surface {
         BaseDialog(state) {
             Column {
-                Text(
-                    text = "Example Dialog",
-                    fontWeight = FontWeight.Black,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                        .padding(bottom = 8.dp)
-                )
+                DialogTitle("Example Dialog")
 
                 Box(
-                    modifier = Modifier.padding(horizontal = 24.dp)
+                    modifier = Modifier.padding(horizontal = MaterialTheme.spacing.dialogHalf)
                 ) {
                     Text("Some text")
                 }

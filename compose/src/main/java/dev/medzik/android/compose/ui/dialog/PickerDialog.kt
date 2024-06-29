@@ -7,13 +7,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import dev.medzik.android.compose.theme.regularHorizontalPadding
+import dev.medzik.android.compose.theme.spacing
 
 /**
  * Composable of a picker dialog with a list of items.
@@ -37,13 +38,7 @@ fun <T> PickerDialog(
     BaseDialog(state) {
         Column {
             if (title != null) {
-                Text(
-                    text = title,
-                    fontWeight = FontWeight.Black,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                        .padding(bottom = 8.dp)
-                )
+                DialogTitle(title)
             }
 
             items.forEach { item ->
@@ -54,7 +49,7 @@ fun <T> PickerDialog(
                     }
                 ) {
                     Row(
-                        modifier = Modifier.padding(horizontal = 24.dp)
+                        modifier = Modifier.regularHorizontalPadding()
                     ) {
                         content(item)
                     }
@@ -65,7 +60,7 @@ fun <T> PickerDialog(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 24.dp)
+                        .regularHorizontalPadding()
                 ) {
                     trailing()
                 }
@@ -92,7 +87,7 @@ private fun PickerDialogPreview() {
             Text(
                 text = it,
                 modifier = Modifier
-                    .padding(vertical = 12.dp)
+                    .padding(vertical = MaterialTheme.spacing.dialogHalf)
                     .fillMaxWidth()
             )
         }

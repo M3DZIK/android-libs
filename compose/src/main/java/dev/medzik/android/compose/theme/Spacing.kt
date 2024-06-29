@@ -28,8 +28,11 @@ data class Spacing(
     val extraSmall: Dp = 4.dp,
     val small: Dp = 8.dp,
     val medium: Dp = 16.dp,
-    val large: Dp = 32.dp,
-)
+    val large: Dp = 32.dp
+) {
+    internal val dialog = 24.dp
+    internal val dialogHalf = 12.dp
+}
 
 /**
  * A CompositionLocal that provides access to the [Spacing] values.

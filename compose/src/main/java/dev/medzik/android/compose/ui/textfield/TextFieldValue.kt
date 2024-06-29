@@ -1,10 +1,11 @@
 package dev.medzik.android.compose.ui.textfield
 
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 
 data class TextFieldValue(
     val value: String = "",
-    val onChange: ((String) -> Unit) = {},
+    val onChange: (String) -> Unit = {},
     val editable: Boolean = true,
     val hint: String? = null,
     val error: String? = null,
@@ -12,7 +13,7 @@ data class TextFieldValue(
 ) {
     companion object {
         fun fromMutableState(
-            state: MutableState<String>,
+            state: MutableState<String> = mutableStateOf(""),
             hint: String? = null,
             error: String? = null,
             valueLabel: ValueLabel? = null

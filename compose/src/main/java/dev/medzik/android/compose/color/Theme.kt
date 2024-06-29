@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -28,6 +29,12 @@ private fun ColorScheme.buildContainerColor(hue: Float): Color {
 
     return tint.compositeOver(backgroundColor)
 }
+
+/**
+ * Returns `true` if the background color is dark, `false` otherwise.
+ */
+val ColorScheme.isDark
+    get() = background.luminance() < 0.5f
 
 /**
  * Returns the container color for success items.

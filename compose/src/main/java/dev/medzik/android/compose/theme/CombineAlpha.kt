@@ -1,4 +1,4 @@
-package dev.medzik.android.compose.color
+package dev.medzik.android.compose.theme
 
 import androidx.compose.ui.graphics.Color
 

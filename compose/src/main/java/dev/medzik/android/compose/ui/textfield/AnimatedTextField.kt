@@ -46,11 +46,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.medzik.android.compose.color.DisabledAlpha
-import dev.medzik.android.compose.color.NormalAlpha
-import dev.medzik.android.compose.color.combineAlpha
 import dev.medzik.android.compose.icons.VisibilityIcon
 import dev.medzik.android.compose.rememberMutable
+import dev.medzik.android.compose.theme.DisabledAlpha
+import dev.medzik.android.compose.theme.NormalAlpha
+import dev.medzik.android.compose.theme.combineAlpha
 import dev.medzik.android.compose.ui.ExpandedIfNotEmpty
 import dev.medzik.android.compose.ui.ExpandedIfNotEmptyRow
 import dev.medzik.android.compose.ui.IconBox

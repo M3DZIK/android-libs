@@ -1,6 +1,6 @@
-# Colors
+# Theme
 
-Documentation of the `dev.medzik.android.compose.color` package.
+Documentation of the `dev.medzik.android.compose.theme` package.
 
 ## Custom color schemas
 

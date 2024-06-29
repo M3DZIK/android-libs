@@ -13,7 +13,7 @@ const sidebar: NavbarConfig = [
     text: 'Compose',
     children: [
 //       '/compose/introduction.md',
-      '/compose/colors.md',
+      '/compose/theme.md',
       '/compose/permission.md',
       '/compose/remember.md',
       '/compose/ui.md'

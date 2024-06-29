@@ -18,9 +18,9 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import dev.medzik.android.compose.color.infoContainer
-import dev.medzik.android.compose.color.successContainer
-import dev.medzik.android.compose.color.warningContainer
+import dev.medzik.android.compose.theme.infoContainer
+import dev.medzik.android.compose.theme.successContainer
+import dev.medzik.android.compose.theme.warningContainer
 import dev.medzik.android.compose.ui.ExpandedIfNotEmptyRow
 
 @Composable

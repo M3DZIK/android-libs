@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
-import dev.medzik.android.compose.color.DisabledAlpha
+import dev.medzik.android.compose.theme.DisabledAlpha
 
 @Composable
 internal fun PlainTextField(

@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.medzik.android.compose.color.DisabledAlpha
-import dev.medzik.android.compose.color.NormalAlpha
+import dev.medzik.android.compose.theme.DisabledAlpha
+import dev.medzik.android.compose.theme.NormalAlpha
 import dev.medzik.android.compose.ui.IconBox
 
 /**

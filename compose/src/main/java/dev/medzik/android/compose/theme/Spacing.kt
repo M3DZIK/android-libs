@@ -30,8 +30,15 @@ data class Spacing(
     val medium: Dp = 16.dp,
     val large: Dp = 32.dp
 ) {
-    internal val dialog = 24.dp
-    internal val dialogHalf = 12.dp
+    /**
+     * The vertical padding for a dialog.
+     */
+    val dialog = 24.dp
+    /**
+     * Half of the vertical padding for a dialog.
+     * Used for horizontal padding between elements in a dialog (for example in a picker dialog).
+     */
+    val dialogHalf = 12.dp
 }
 
 /**

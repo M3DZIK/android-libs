@@ -13,22 +13,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 private const val SUCCESS = 120f
-private const val INFO = 210f
+private const val INFO = 200f
 private const val WARNING = 55f
 
-@Composable
 private fun ColorScheme.buildContainerColor(hue: Float): Color {
     val tint = Color.hsv(
         hue = hue,
         saturation = 1f,
         value = 1f,
+        alpha = 0.20f
     )
 
     val backgroundColor = surfaceVariant
 
-    return tint
-        .copy(alpha = 0.20f)
-        .compositeOver(backgroundColor)
+    return tint.compositeOver(backgroundColor)
 }
 
 /**
@@ -37,7 +35,6 @@ private fun ColorScheme.buildContainerColor(hue: Float): Color {
  * The color is typically used for backgrounds for a success badge.
  */
 val ColorScheme.successContainer: Color
-    @Composable
     get() = buildContainerColor(SUCCESS)
 
 /**
@@ -46,7 +43,6 @@ val ColorScheme.successContainer: Color
  * The color is typically used for backgrounds for a info badge.
  */
 val ColorScheme.infoContainer: Color
-    @Composable
     get() = buildContainerColor(INFO)
 
 /**
@@ -55,7 +51,6 @@ val ColorScheme.infoContainer: Color
  * The color is typically used for backgrounds for a warning badge.
  */
 val ColorScheme.warningContainer: Color
-    @Composable
     get() = buildContainerColor(WARNING)
 
 @Preview

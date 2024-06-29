@@ -3,7 +3,6 @@ package dev.medzik.android.compose.ui.bottomsheet
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
@@ -26,6 +25,7 @@ import kotlinx.coroutines.launch
  * @param items the list of items to display in the bottom sheet
  * @param onSelected callback function invoked when the item is selected
  * @param onDismiss function that handles the dismissal of the bottom sheet
+ * @param modifier a modifier to apply to the row containing the item declarative in [content]
  * @param content visual representation of each item in the picker
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,6 +35,7 @@ fun <T> PickerBottomSheet(
     items: List<T>,
     onSelected: (T) -> Unit,
     onDismiss: () -> Unit,
+    modifier: Modifier = Modifier,
     content: @Composable (T) -> Unit
 ) {
     val scope = rememberCoroutineScope()
@@ -47,7 +48,7 @@ fun <T> PickerBottomSheet(
             items.forEach { item ->
                 item {
                     Row(
-                        modifier = Modifier
+                        modifier = modifier
                             .fillMaxWidth()
                             .clickable {
                                 scope
@@ -57,8 +58,7 @@ fun <T> PickerBottomSheet(
                                             onSelected(item)
                                         }
                                     }
-                            }
-                            .height(44.dp),
+                            },
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         content(item)

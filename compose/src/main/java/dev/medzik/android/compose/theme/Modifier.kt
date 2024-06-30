@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
  */
 @Composable
 @Stable
-fun Modifier.compactHorizontalPadding() = this then padding(
+fun Modifier.compactHorizontalPadding() = this.padding(
     horizontal = MaterialTheme.spacing.small
 )
 
@@ -27,7 +27,7 @@ fun Modifier.compactHorizontalPadding() = this then padding(
  */
 @Composable
 @Stable
-fun Modifier.regularHorizontalPadding() = this then padding(
+fun Modifier.regularHorizontalPadding() = this.padding(
     horizontal = MaterialTheme.spacing.medium
 )
 

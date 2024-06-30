@@ -1,21 +1,23 @@
 package dev.medzik.android.compose.ui.bottomsheet
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import dev.medzik.android.compose.theme.regularHorizontalPadding
+import dev.medzik.android.compose.theme.spacing
 import kotlinx.coroutines.launch
 
 /**
@@ -47,21 +49,24 @@ fun <T> PickerBottomSheet(
         LazyColumn {
             items.forEach { item ->
                 item {
-                    Row(
-                        modifier = modifier
+                    Box(
+                        modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
                                 scope
-                                    .launch { state.hide() }
-                                    .invokeOnCompletion {
-                                        if (!state.sheetState.isVisible) {
-                                            onSelected(item)
-                                        }
+                                .launch { state.hide() }
+                                .invokeOnCompletion {
+                                    if (!state.sheetState.isVisible) {
+                                        onSelected(item)
                                     }
-                            },
-                        verticalAlignment = Alignment.CenterVertically,
+                                }
+                            }
                     ) {
-                        content(item)
+                        Row(
+                            modifier = modifier.regularHorizontalPadding()
+                        ) {
+                            content(item)
+                        }
                     }
                 }
             }
@@ -91,11 +96,11 @@ private fun PickerBottomSheetPreview() {
         onSelected = { selectedItem.value = it },
         onDismiss = {
             scope.launch { state.hide() }
-        }
+        },
+        modifier = Modifier.padding(vertical = MaterialTheme.spacing.medium)
     ) { item ->
         Text(
-            text = item,
-            modifier = Modifier.padding(8.dp)
+            text = item
         )
     }
 }

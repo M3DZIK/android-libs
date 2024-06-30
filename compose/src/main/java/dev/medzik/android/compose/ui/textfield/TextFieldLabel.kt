@@ -23,7 +23,7 @@ internal fun TextFieldLabel(
     val normalTextSize = LocalTextStyle.current.fontSize.value
     val textSize by animateFloatAsState(
         targetValue = if (expanded) expandedTextSize else normalTextSize,
-        label = "TextFieldLabel text size",
+        label = "TextFieldLabelSize",
     )
 
     val expandedTextColor = when {
@@ -34,7 +34,7 @@ internal fun TextFieldLabel(
     val normalTextColor = LocalContentColor.current
     val textColor by animateColorAsState(
         targetValue = if (expanded) expandedTextColor else normalTextColor,
-        label = "TextFieldLabel text color"
+        label = "TextFieldLabelColor"
     )
 
     Text(

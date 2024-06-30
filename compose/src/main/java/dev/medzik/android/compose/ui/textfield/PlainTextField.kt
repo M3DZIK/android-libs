@@ -40,7 +40,9 @@ internal fun PlainTextField(
         color.copy(alpha = alpha)
     }
 
-    val mergedTextStyle = textStyle.merge(TextStyle(color = textColor))
+    val mergedTextStyle = textStyle.merge(
+        TextStyle(color = textColor)
+    )
 
     BasicTextField(
         value = value,

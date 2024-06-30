@@ -23,14 +23,12 @@ import androidx.compose.ui.unit.dp
  * @property small A small spacing value, suitable for padding between element in a dense layout.
  * @property medium A standard spacing value, providing comfortable spacing between elements.
  * @property large A larger spacing value, used for more significant separation between elements.
- * @property mediumLarge The medium large spacing value, typically used for min height of a preference or text field.
  */
 data class Spacing(
     val extraSmall: Dp = 4.dp,
     val small: Dp = 8.dp,
     val medium: Dp = 16.dp,
-    val large: Dp = 32.dp,
-    val mediumLarge: Dp = 50.dp
+    val large: Dp = 32.dp
 ) {
     /**
      * The vertical padding for a dialog.

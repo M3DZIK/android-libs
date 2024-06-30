@@ -4,8 +4,6 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,13 +13,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
-import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import dev.medzik.android.compose.theme.infoContainer
+import dev.medzik.android.compose.theme.isDark
+import dev.medzik.android.compose.theme.spacing
 import dev.medzik.android.compose.theme.successContainer
 import dev.medzik.android.compose.theme.warningContainer
-import dev.medzik.android.compose.ui.ExpandedIfNotEmptyRow
 
 @Composable
 internal fun AnimatedTextFieldBadge(
@@ -59,8 +56,7 @@ internal fun AnimatedTextFieldBadge(
             TextFieldValue.ValueLabel.Type.WARNING -> MaterialTheme.colorScheme.warningContainer
             TextFieldValue.ValueLabel.Type.ERROR -> MaterialTheme.colorScheme.errorContainer
         },
-        text = text,
-        icon = null,
+        text = text
     )
 }
 
@@ -68,8 +64,7 @@ internal fun AnimatedTextFieldBadge(
 internal fun AnimatedTextFieldBadge(
     modifier: Modifier = Modifier,
     backgroundColor: Color,
-    text: String,
-    icon: ImageVector? = null,
+    text: String
 ) {
     val backgroundColorState = animateColorAsState(
         backgroundColor,
@@ -77,10 +72,10 @@ internal fun AnimatedTextFieldBadge(
     )
 
     val contentColor = run {
-        val color = if (backgroundColor.luminance() > 0.5f) {
-            Color.Black
-        } else {
+        val color = if (MaterialTheme.colorScheme.isDark) {
             Color.White
+        } else {
+            Color.Black
         }
 
         val tint = backgroundColor.copy(alpha = 0.1f)
@@ -100,26 +95,11 @@ internal fun AnimatedTextFieldBadge(
                 drawRect(color)
             }
             .padding(
-                top = 4.dp,
-                bottom = 4.dp,
-                start = 8.dp,
-                end = 8.dp,
+                horizontal = MaterialTheme.spacing.small,
+                vertical = MaterialTheme.spacing.extraSmall
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        ExpandedIfNotEmptyRow(
-            value = icon,
-        ) {
-            Icon(
-                modifier = Modifier
-                    .padding(end = 4.dp)
-                    .size(14.dp),
-                imageVector = it,
-                contentDescription = null,
-                tint = contentColorState.value,
-            )
-        }
-
         Text(
             modifier = Modifier.animateContentSize(),
             text = text,

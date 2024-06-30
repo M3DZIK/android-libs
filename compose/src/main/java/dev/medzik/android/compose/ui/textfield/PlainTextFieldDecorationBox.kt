@@ -19,7 +19,13 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.VisualTransformation
 import dev.medzik.android.compose.Decoration
 
+/**
+ * [androidx.compose.material3.PlaceholderAnimationDuration]
+ */
 private const val PlaceholderAnimationDuration = 83
+/**
+ * [androidx.compose.material3.PlaceholderAnimationDelayOrDuration]
+ */
 private const val PlaceholderAnimationDelayOrDuration = 67
 
 @Composable
@@ -44,10 +50,11 @@ internal fun PlainTextFieldDecorationBox(
 
     val transition = updateTransition(
         inputState,
-        label = "TextField Input Phrase transitions"
+        label = "TextFieldInputState"
     )
 
     val placeholderOpacity by transition.animateFloat(
+        label = "PlaceholderOpacity",
         transitionSpec = {
             when {
                 InputState.Focused isTransitioningTo InputState.UnfocusedEmpty -> {
@@ -68,8 +75,7 @@ internal fun PlainTextFieldDecorationBox(
 
                 else -> spring()
             }
-        },
-        label = "Placeholder opacity"
+        }
     ) {
         when (it) {
             InputState.Focused -> 1f
@@ -111,19 +117,15 @@ internal fun PlainTextFieldDecorationBox(
 }
 
 /**
- * An internal state for animating a label and an indicator in text field.
+ * An internal state used to animate a label and an indicator.
  */
 internal enum class InputState {
-    /**
-     * Text field is focused.
-     */
+    // Text field is focused
     Focused,
-    /**
-     * Text field is not focused and input text is empty.
-     */
+
+    // Text field is not focused and input text is empty
     UnfocusedEmpty,
-    /**
-     * Text field is not focused but input text is not empty.
-     */
+
+    // Text field is not focused but input text is not empty
     UnfocusedNotEmpty
 }

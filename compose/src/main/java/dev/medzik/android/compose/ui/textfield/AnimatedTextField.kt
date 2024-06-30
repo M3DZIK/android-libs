@@ -20,8 +20,8 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material3.IconButton
@@ -30,6 +30,7 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -51,6 +52,8 @@ import dev.medzik.android.compose.rememberMutable
 import dev.medzik.android.compose.theme.DisabledAlpha
 import dev.medzik.android.compose.theme.NormalAlpha
 import dev.medzik.android.compose.theme.combineAlpha
+import dev.medzik.android.compose.theme.spacing
+import dev.medzik.android.compose.ui.ButtonIconSpacer
 import dev.medzik.android.compose.ui.ExpandedIfNotEmpty
 import dev.medzik.android.compose.ui.ExpandedIfNotEmptyRow
 import dev.medzik.android.compose.ui.IconBox
@@ -91,32 +94,28 @@ fun AnimatedTextField(
         Column {
             Row(
                 modifier = Modifier.padding(
-                    start = 16.dp,
-                    end = 8.dp,
-                    top = 8.dp,
-                    bottom = 8.dp,
+                    horizontal = MaterialTheme.spacing.medium,
+                    vertical = MaterialTheme.spacing.small
                 ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val disabledAlphaTarget = if (disabled) DisabledAlpha else NormalAlpha
-                val disabledAlphaState = animateFloatAsState(
-                    disabledAlphaTarget,
-                    label = "TextField alpha"
+                val alphaTarget = if (disabled) DisabledAlpha else NormalAlpha
+                val alphaState by animateFloatAsState(
+                    alphaTarget,
+                    label = "TextFieldAlpha"
                 )
 
                 if (leading != null) {
                     Row(
                         modifier = Modifier.graphicsLayer {
-                            alpha = disabledAlphaState.value
+                            alpha = alphaState
                         },
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         leading()
                     }
 
-                    Spacer(
-                        modifier = Modifier.width(16.dp)
-                    )
+                    ButtonIconSpacer()
                 }
 
                 Column(
@@ -125,7 +124,7 @@ fun AnimatedTextField(
                     val focused = hasFocus || value.value.isNotEmpty()
 
                     TextFieldLabelLayout(
-                        modifier = Modifier.heightIn(min = 50.dp),
+                        modifier = Modifier.heightIn(min = TextFieldDefaults.MinHeight),
                         expanded = focused
                     ) {
                         if (label != null) {
@@ -134,7 +133,7 @@ fun AnimatedTextField(
                                     .fillMaxWidth()
                                     .animateContentSize()
                                     .graphicsLayer {
-                                        alpha = disabledAlphaState.value
+                                        alpha = alphaState
                                     },
                                 text = label,
                                 expanded = focused,
@@ -153,7 +152,7 @@ fun AnimatedTextField(
                                 {
                                     val placeholderAlpha by animateFloatAsState(
                                         targetValue = if (focused || label == null) 1f else 0f,
-                                        label = "Placeholder alpha"
+                                        label = "PlaceholderAlpha"
                                     )
 
                                     Text(
@@ -178,9 +177,7 @@ fun AnimatedTextField(
                         )
                     }
 
-                    Column(
-                        modifier = Modifier.padding(end = 8.dp)
-                    ) {
+                    Column {
                         ExpandedIfNotEmpty(
                             value = value.error ?: value.valueLabel
                         ) {
@@ -197,13 +194,11 @@ fun AnimatedTextField(
                 }
 
                 if (trailing != null) {
-                    Spacer(
-                        modifier = Modifier.width(8.dp)
-                    )
+                    ButtonIconSpacer()
 
                     Row(
                         modifier = Modifier.graphicsLayer {
-                            alpha = disabledAlphaState.value
+                            alpha = alphaState
                         },
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -218,7 +213,7 @@ fun AnimatedTextField(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Spacer(
-                            modifier = Modifier.width(4.dp)
+                            modifier = Modifier.width(MaterialTheme.spacing.extraSmall)
                         )
 
                         VerticalDivider(
@@ -227,7 +222,7 @@ fun AnimatedTextField(
                         )
 
                         Spacer(
-                            modifier = Modifier.width(4.dp)
+                            modifier = Modifier.width(MaterialTheme.spacing.extraSmall)
                         )
 
                         IconButton(
@@ -262,7 +257,7 @@ private fun AnimatedTextFieldSurface(
 
     val borderColor by animateColorAsState(
         targetValue = borderTargetColor,
-        label = "TextField border color"
+        label = "TextFieldBorderColor"
     )
 
     val shape = MaterialTheme.shapes.large
@@ -352,7 +347,7 @@ private fun AnimatedTextFieldPreview() {
                     IconBox(imageVector = Icons.Default.Info)
                 },
                 trailing = {
-                    IconBox(imageVector = Icons.Default.Close)
+                    IconBox(imageVector = Icons.Default.LockOpen)
                 },
                 disabled = true
             )

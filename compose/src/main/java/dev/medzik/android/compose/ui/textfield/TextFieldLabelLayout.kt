@@ -18,7 +18,7 @@ internal fun TextFieldLabelLayout(
 ) {
     val progress by animateFloatAsState(
         targetValue = if (expanded) 1f else 0f,
-        label = "TextFieldLabelLayout progress"
+        label = "TextFieldLabelLayoutExpandProgress"
     )
 
     Box(
@@ -38,8 +38,8 @@ internal fun TextFieldLabelLayout(
 
             val width = constraints.maxWidth
             val height = kotlin.run {
-                val maxHeight = placeables
-                    .maxOf { it.height }
+                val maxHeight = placeables.maxOf { it.height }
+
                 if (placeables.size == 2) {
                     val (label, field) = placeables
                     val height = (label.height * progress).roundToInt() + field.height

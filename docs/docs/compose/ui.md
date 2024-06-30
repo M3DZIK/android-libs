@@ -12,29 +12,7 @@ Example:
 ![BaseDialog preview]
 
 ```kotlin
-@Composable
-fun BaseDialogExample() {
-    val state = rememberDialogState()
-    state.show()
-
-    BaseDialog(state) {
-        Column {
-            Text(
-                text = "Example Dialog",
-                fontWeight = FontWeight.Black,
-                modifier = Modifier
-                    .padding(horizontal = 24.dp)
-                    .padding(bottom = 8.dp)
-            )
-
-            Box(
-                modifier = Modifier.padding(horizontal = 24.dp)
-            ) {
-                Text("Some text")
-            }
-        }
-    }
-}
+<!-- @include: @compose/ui/dialog/BaseDialog.kt#snippet -->
 ```
 
 ### PickerDialog
@@ -47,27 +25,7 @@ Example:
 ![PickerDialog preview]
 
 ```kotlin
-@Composable
-fun PickerDialogExample() {
-    val state = rememberDialogState()
-    state.show()
-
-    val items = listOf("First", "Second", "Third")
-
-    PickerDialog(
-        state,
-        title = "Example Picker Dialog",
-        items = items,
-        onSelected = {}
-    ) {
-        Text(
-            text = it,
-            modifier = Modifier
-                .padding(vertical = 12.dp)
-                .fillMaxWidth()
-        )
-    }
-}
+<!-- @include: @compose/ui/dialog/PickerDialog.kt#snippet -->
 ```
 
 [BaseDialog preview]: https://github.com/M3DZIK/android-utils/assets/87065584/91156b20-7eac-48e5-9909-96c3d64f50fc

@@ -70,6 +70,7 @@ fun <T> PickerDialog(
 }
 
 @Preview
+// #region snippet
 @Composable
 private fun PickerDialogPreview() {
     val state = rememberDialogState()
@@ -93,3 +94,4 @@ private fun PickerDialogPreview() {
         }
     }
 }
+// #endregion snippet

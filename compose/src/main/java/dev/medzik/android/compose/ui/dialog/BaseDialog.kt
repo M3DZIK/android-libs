@@ -45,6 +45,7 @@ fun BaseDialog(
 }
 
 @Preview
+// #region snippet
 @Composable
 private fun BaseDialogPreview() {
     val state = rememberDialogState()
@@ -64,3 +65,4 @@ private fun BaseDialogPreview() {
         }
     }
 }
+// #endregion snippet

@@ -1,6 +1,10 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
+import { getDirname, path } from 'vuepress/utils'
+import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+
+const __dirname = getDirname(import.meta.url)
 
 const sidebar: NavbarConfig = [
   {
@@ -43,4 +47,17 @@ export default defineUserConfig({
   }),
 
   bundler: viteBundler(),
+
+  plugins: [
+    mdEnhancePlugin({
+      include: {
+        resolvePath: (file) => {
+          if (file.startsWith("@compose"))
+            return file.replace(/@compose/, path.resolve(__dirname, '../../../compose/src/main/java/dev/medzik/android/compose'))
+
+          return file
+        },
+      },
+    })
+  ]
 })

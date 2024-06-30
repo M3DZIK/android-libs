@@ -4,11 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowOutward
 import androidx.compose.material.icons.filled.Settings
@@ -19,9 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import dev.medzik.android.compose.theme.DisabledAlpha
 import dev.medzik.android.compose.theme.NormalAlpha
+import dev.medzik.android.compose.theme.spacing
+import dev.medzik.android.compose.ui.ButtonIconSpacer
 import dev.medzik.android.compose.ui.IconBox
 
 /**
@@ -55,25 +53,20 @@ fun BasicPreference(
                 onClick = onClick
             )
             .alpha(alpha)
-            .padding(
-                vertical = 16.dp,
-                horizontal = 16.dp
-            ),
+            .padding(MaterialTheme.spacing.medium),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (leading != null) {
             leading()
 
-            Spacer(
-                modifier = Modifier.width(12.dp)
-            )
+            ButtonIconSpacer()
         }
 
         Column(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .weight(1f)
-                .heightIn(min = 50.dp)
+                .padding(vertical = MaterialTheme.spacing.extraSmall)
         ) {
             Text(
                 text = title,
@@ -90,9 +83,7 @@ fun BasicPreference(
         }
 
         if (trailing != null) {
-            Spacer(
-                modifier = Modifier.width(12.dp)
-            )
+            ButtonIconSpacer()
 
             trailing()
         }

@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.medzik.android.compose.rememberMutable
+import dev.medzik.android.compose.theme.spacing
 import dev.medzik.android.compose.ui.IconBox
 import dev.medzik.android.compose.ui.dialog.PickerDialog
 import dev.medzik.android.compose.ui.dialog.rememberDialogState
@@ -49,7 +50,7 @@ fun PropertyPreference(
             text = currentValue,
             color = MaterialTheme.colorScheme.primary,
             style = MaterialTheme.typography.labelLarge,
-            modifier = Modifier.padding(start = 16.dp)
+            modifier = Modifier.padding(start = MaterialTheme.spacing.buttonIcon)
         )
     },
     enabled = enabled

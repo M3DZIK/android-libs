@@ -1,12 +1,15 @@
 package dev.medzik.android.compose.ui.preference
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Swipe
 import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.compose.rememberMutable
+import dev.medzik.android.compose.ui.IconBox
 
 /**
  * Displays a preference entry with a switcher.
@@ -49,7 +52,7 @@ fun SwitcherPreference(
  * @param modifier the [Modifier] to be applied to the root element
  * @param title title of the preference entry
  * @param subtitle subtitle of the preference entry
- * @param checked mutable state of a current checked state
+ * @param state mutable state of a current checked state
  * @param onCheckedChange called when changed the checked state or when clicked the preference entry
  * @param leading composable to display with the preference entry
  * @param enabled indicates whether the preference entry is enabled or disabled
@@ -57,7 +60,7 @@ fun SwitcherPreference(
 @Composable
 fun SwitcherPreference(
     title: String,
-    checked: MutableState<Boolean>,
+    state: MutableState<Boolean>,
     modifier: Modifier = Modifier,
     onCheckedChange: (Boolean) -> Unit = {},
     subtitle: String? = null,
@@ -67,9 +70,9 @@ fun SwitcherPreference(
     modifier = modifier,
     title = title,
     subtitle = subtitle,
-    checked = checked.value,
+    checked = state.value,
     onCheckedChange = {
-        checked.value = it
+        state.value = it
         onCheckedChange(it)
     },
     leading = leading,
@@ -84,12 +87,15 @@ private fun SwitcherPreferencePreview() {
     Column {
         SwitcherPreference(
             title = "Switcher Preference",
-            checked = checked
+            state = checked
         )
 
         SwitcherPreference(
             title = "Disabled",
             subtitle = "Disabled Switcher Preference",
+            leading = {
+                IconBox(imageVector = Icons.Default.Swipe)
+            },
             checked = true,
             onCheckedChange = {},
             enabled = false

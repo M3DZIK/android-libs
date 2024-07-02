@@ -27,8 +27,8 @@ import dev.medzik.android.compose.icons.TopAppBarBackIcon
 @Composable
 fun TopAppBarMultiColor(
     firstText: String,
-    firstColor: Color = MaterialTheme.colorScheme.secondary,
     secondText: String,
+    firstColor: Color = MaterialTheme.colorScheme.secondary,
     secondColor: Color = MaterialTheme.colorScheme.primary,
     navigationIcon: @Composable (() -> Unit) = {},
     actions: @Composable (RowScope.() -> Unit) = {}

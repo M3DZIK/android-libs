@@ -5,14 +5,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.compose.rememberMutable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
- * Button with an option to show a loading animation.
+ * Button that shows a loading animation when [loading] is true.
  *
  * @param onClick called when the button is clicked
  * @param modifier the [Modifier] to be applied to the button
@@ -23,7 +26,7 @@ import dev.medzik.android.compose.rememberMutable
 fun LoadingButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    loading: Boolean = false,
+    loading: Boolean,
     enabled: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -38,6 +41,38 @@ fun LoadingButton(
             content()
         }
     }
+}
+
+/**
+ * Button with an loading animation.
+ *
+ * @param onClick called when the button is clicked (launched on IO thread)
+ * @param modifier the [Modifier] to be applied to the button
+ * @param enabled controls the enabled state of this button
+ */
+@Composable
+fun LoadingButton(
+    onClick: suspend () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    var loading by rememberMutable(false)
+    val scope = rememberCoroutineScope()
+
+    LoadingButton(
+        onClick = {
+            loading = true
+            scope.launch(Dispatchers.IO) {
+                onClick()
+                loading = false
+            }
+        },
+        modifier = modifier,
+        loading = loading,
+        enabled = enabled,
+        content = content
+    )
 }
 
 @Preview(showBackground = true)
@@ -60,6 +95,14 @@ private fun LoadingButtonPreview() {
             onClick = {},
         ) {
             Text("Loading")
+        }
+
+        LoadingButton(
+            onClick = {
+                Thread.sleep(1000)
+            }
+        ) {
+            Text("Sleep 1s")
         }
     }
 }

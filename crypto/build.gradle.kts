@@ -26,7 +26,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.datastore)
-    implementation(libs.libcrypto)
 
     androidTestImplementation(libs.kotlinx.serialization.json)
     androidTestImplementation(libs.test.junit)

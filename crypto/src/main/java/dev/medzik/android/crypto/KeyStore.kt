@@ -2,7 +2,6 @@ package dev.medzik.android.crypto
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import dev.medzik.libcrypto.Hex
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.IllegalBlockSizeException
@@ -10,6 +9,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
+@OptIn(ExperimentalStdlibApi::class)
 object KeyStore {
     /**
      * Initializes a new Cipher for encryption.
@@ -61,12 +61,10 @@ object KeyStore {
     fun encrypt(
         cipher: Cipher,
         clearBytes: ByteArray
-    ): KeyStoreCipherText {
-        return KeyStoreCipherText(
-            cipherText = Hex.encode(cipher.doFinal(clearBytes)),
-            initializationVector = Hex.encode(cipher.iv)
-        )
-    }
+    ) = KeyStoreCipherText(
+        cipherText = cipher.doFinal(clearBytes).toHexString(),
+        initializationVector = cipher.iv.toHexString()
+    )
 
     /**
      * Decrypts the given cipher text.
@@ -79,9 +77,7 @@ object KeyStore {
     fun decrypt(
         cipher: Cipher,
         cipherText: String
-    ): ByteArray {
-        return cipher.doFinal(Hex.decode(cipherText))
-    }
+    ): ByteArray = cipher.doFinal(cipherText.hexToByteArray())
 
     /**
      * Deletes the secret key with the given [alias] from the Android KeyStore.

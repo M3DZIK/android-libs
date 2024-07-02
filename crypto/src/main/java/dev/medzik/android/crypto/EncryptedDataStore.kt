@@ -1,7 +1,7 @@
 package dev.medzik.android.crypto
 
 import androidx.datastore.core.Serializer
-import dev.medzik.libcrypto.Hex
+import okio.ByteString.Companion.decodeHex
 import java.io.*
 import java.nio.charset.StandardCharsets
 
@@ -48,6 +48,7 @@ interface EncryptedDataStoreSerializer<T: EncryptedDataStore> : Serializer<T> {
     /**
      * Reads and decrypts the [EncryptedDataStore] from data store.
      */
+    @OptIn(ExperimentalStdlibApi::class)
     override suspend fun readFrom(input: InputStream): T {
         // read string from InputStream
         val cipherTextWithIVBuilder = StringBuilder()
@@ -66,7 +67,7 @@ interface EncryptedDataStoreSerializer<T: EncryptedDataStore> : Serializer<T> {
         val cipherText = cipherTextWithIVBuilder.substring(ivLength)
 
         // decrypt cipher text
-        val cipher = KeyStore.initForDecryption(keyStoreAlias, Hex.decode(iv), false)
+        val cipher = KeyStore.initForDecryption(keyStoreAlias, iv.hexToByteArray(), false)
         val decrypted = KeyStore.decrypt(cipher, cipherText)
 
         return decode(String(decrypted))

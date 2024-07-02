@@ -1,7 +1,7 @@
 package dev.medzik.android.crypto
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dev.medzik.libcrypto.Hex
+import okio.ByteString.Companion.decodeHex
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -12,6 +12,7 @@ class KeyStoreTests {
         override val name = "test_key"
     }
 
+    @OptIn(ExperimentalStdlibApi::class)
     @Test
     fun testEncryptDecrypt() {
         val clearText = "Hello World!"
@@ -23,7 +24,7 @@ class KeyStoreTests {
         // decrypt
         val cipherDec = KeyStore.initForDecryption(
             TestKeyAlias,
-            Hex.decode(encryptedData.initializationVector),
+            encryptedData.initializationVector.hexToByteArray(),
             false
         )
         val decryptedBytes = KeyStore.decrypt(cipherDec, encryptedData.cipherText)

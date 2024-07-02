@@ -1,7 +1,6 @@
 package dev.medzik.android.crypto
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import okio.ByteString.Companion.decodeHex
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

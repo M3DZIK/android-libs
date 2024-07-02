@@ -43,12 +43,12 @@ fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
                 artifact(javadocJar)
 
                 pom {
-                    url = "https://github.com/M3DZIK/android-utils"
+                    url = "https://github.com/M3DZIK/android-libs"
 
                     licenses {
                         license {
                             name.set("MIT")
-                            url.set("https://github.com/M3DZIK/android-utils/blob/main/LICENSE")
+                            url.set("https://github.com/M3DZIK/android-libs/blob/main/LICENSE")
                         }
                     }
 
@@ -60,9 +60,9 @@ fun Project.publishConfig(configuration: MavenPublication.() -> Unit) {
                     }
 
                     scm {
-                        connection.set("scm:git@github.com:M3DZIK/android-utils.git")
-                        developerConnection.set("scm:git@github.com:M3DZIK/android-utils.git")
-                        url.set("scm:git@github.com:M3DZIK/android-utils.git")
+                        connection.set("scm:git@github.com:M3DZIK/android-libs.git")
+                        developerConnection.set("scm:git@github.com:M3DZIK/android-libs.git")
+                        url.set("scm:git@github.com:M3DZIK/android-libs.git")
                     }
                 }
 

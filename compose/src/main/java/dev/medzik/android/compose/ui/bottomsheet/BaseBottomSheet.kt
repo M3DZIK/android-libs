@@ -87,7 +87,7 @@ private fun BaseBottomSheetPreview() {
                         .launch { state.hide() }
                         .invokeOnCompletion {
                             if (!state.sheetState.isVisible) {
-                                /** Some code to be executed when clicked the item */
+                                println("Clicked")
                             }
                         }
                 }

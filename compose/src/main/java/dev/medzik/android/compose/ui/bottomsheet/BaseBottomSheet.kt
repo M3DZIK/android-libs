@@ -6,9 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.medzik.android.compose.theme.spacing
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
  *
  * @param state visible state
  * @param onDismiss function that handles the dismissal of the bottom sheet
+ * @param additionalBottomPadding additional bottom padding for this sheet
  * @param content content of the bottom sheet to display
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,8 +42,12 @@ import kotlinx.coroutines.launch
 fun BaseBottomSheet(
     state: BottomSheetState,
     onDismiss: () -> Unit,
+    additionalBottomPadding: Dp = MaterialTheme.spacing.extraSmall,
     content: @Composable (ColumnScope.() -> Unit)
 ) {
+    val bottomPadding = WindowInsets.navigationBars.asPaddingValues()
+        .calculateBottomPadding() + additionalBottomPadding
+
     if (state.visible) {
         ModalBottomSheet(
             onDismissRequest = onDismiss,
@@ -48,7 +55,7 @@ fun BaseBottomSheet(
             sheetState = state.sheetState
         ) {
             Box(
-                modifier = Modifier.navigationBarsPadding()
+                modifier = Modifier.padding(bottom = bottomPadding)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()

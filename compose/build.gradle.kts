@@ -33,6 +33,8 @@ dependencies {
     compileOnly(libs.compose.material3)
     compileOnly(libs.compose.navigation)
 
+    implementation(libs.medzik.common.kotlin)
+
     debugImplementation(libs.compose.material.icons)
     debugImplementation(libs.compose.material3)
     debugImplementation(libs.compose.navigation)

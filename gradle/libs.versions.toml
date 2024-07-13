@@ -13,6 +13,7 @@ kotlin = "2.0.0"
 kotlin-dokka = "1.9.20"
 kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.7.1"
+medzik-common-kotlin = "1.0.0"
 nexus-publish = "2.0.0"
 
 [libraries]
@@ -29,6 +30,7 @@ compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", versi
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+medzik-common-kotlin = { module = "dev.medzik.common:kotlin", version.ref = "medzik-common-kotlin" }
 test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso-core" }
 test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
 

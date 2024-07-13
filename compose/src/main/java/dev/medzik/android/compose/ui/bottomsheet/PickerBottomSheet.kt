@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.medzik.android.compose.theme.regularHorizontalPadding
 import dev.medzik.android.compose.theme.spacing
 import kotlinx.coroutines.launch
 
@@ -63,7 +62,8 @@ fun <T> PickerBottomSheet(
                             }
                     ) {
                         Row(
-                            modifier = modifier.regularHorizontalPadding()
+                            modifier = modifier
+                                .padding(horizontal = MaterialTheme.spacing.horizontalPadding)
                         ) {
                             content(item)
                         }

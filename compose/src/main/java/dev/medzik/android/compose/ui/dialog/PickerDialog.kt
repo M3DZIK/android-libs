@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.medzik.android.compose.theme.regularHorizontalPadding
 import dev.medzik.android.compose.theme.spacing
 
 /**
@@ -49,7 +48,7 @@ fun <T> PickerDialog(
                     }
                 ) {
                     Row(
-                        modifier = Modifier.regularHorizontalPadding()
+                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium)
                     ) {
                         content(item)
                     }
@@ -60,7 +59,7 @@ fun <T> PickerDialog(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .regularHorizontalPadding()
+                        .padding(horizontal = MaterialTheme.spacing.horizontalPadding)
                 ) {
                     trailing()
                 }

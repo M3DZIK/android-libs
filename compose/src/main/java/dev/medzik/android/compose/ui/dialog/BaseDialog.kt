@@ -57,7 +57,7 @@ private fun BaseDialogPreview() {
                 DialogTitle("Example Dialog")
 
                 Box(
-                    modifier = Modifier.padding(horizontal = MaterialTheme.spacing.dialogHalf)
+                    modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium)
                 ) {
                     Text("Some text")
                 }

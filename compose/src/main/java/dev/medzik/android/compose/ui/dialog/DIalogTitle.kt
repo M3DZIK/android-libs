@@ -5,7 +5,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.medzik.android.compose.theme.regularHorizontalPadding
 import dev.medzik.android.compose.theme.spacing
 
 @Composable
@@ -14,7 +13,7 @@ fun DialogTitle(text: String) {
         text = text,
         style = MaterialTheme.typography.titleMedium,
         modifier =  Modifier
-            .regularHorizontalPadding()
+            .padding(horizontal = MaterialTheme.spacing.medium)
             .padding(bottom = MaterialTheme.spacing.dialogHalf)
     )
 }

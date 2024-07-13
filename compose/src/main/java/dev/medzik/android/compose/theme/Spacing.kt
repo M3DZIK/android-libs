@@ -44,6 +44,12 @@ data class Spacing(
      * The padding after/before a leading/trailing icon.
      */
     val buttonIcon: Dp = 12.dp
+
+    /**
+     * The padding of a horizontal padding.
+     * Typically used for horizontal padding in screens.
+     */
+    val horizontalPadding: Dp = small
 }
 
 /**

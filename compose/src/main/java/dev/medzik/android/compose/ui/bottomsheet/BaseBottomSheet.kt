@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.medzik.android.compose.theme.regularHorizontalPadding
+import dev.medzik.android.compose.theme.spacing
 import kotlinx.coroutines.launch
 
 /**
@@ -86,7 +87,7 @@ private fun BaseBottomSheetPreview() {
                         .launch { state.hide() }
                         .invokeOnCompletion {
                             if (!state.sheetState.isVisible) {
-
+                                /** Some code to be executed when clicked the item */
                             }
                         }
                 }
@@ -101,7 +102,7 @@ private fun BaseBottomSheetPreview() {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .regularHorizontalPadding()
+                    .padding(horizontal = MaterialTheme.spacing.horizontalPadding)
             )
         }
     }

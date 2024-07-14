@@ -11,7 +11,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.sdk.min.get().toInt()
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -39,9 +39,9 @@ dependencies {
     debugImplementation(libs.compose.material3)
     debugImplementation(libs.compose.navigation)
 
-    androidTestImplementation(libs.test.junit)
-    androidTestImplementation(libs.test.espresso.core)
-    androidTestImplementation(libs.compose.ui.test.junit4)
+//    androidTestImplementation(libs.test.junit)
+//    androidTestImplementation(libs.test.espresso.core)
+//    androidTestImplementation(libs.compose.ui.test.junit4)
 
     testImplementation(libs.test.junit)
     testImplementation(libs.compose.runtime)

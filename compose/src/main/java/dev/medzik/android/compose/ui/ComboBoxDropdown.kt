@@ -24,6 +24,7 @@ import dev.medzik.android.compose.rememberMutable
  * @param values list of values
  * @param value currently selected value
  * @param onValueChange callback to be called when a value is selected
+ * @param getValueName function used for getting name of the value to be displayed
  * @param label label for the text field
  */
 @OptIn(ExperimentalMaterial3Api::class)

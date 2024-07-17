@@ -18,21 +18,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.medzik.android.compose.rememberMutable
 
 /**
- * Dropdown menu for selecting an enum value.
+ * Dropdown menu for selecting value.
  *
  * @param modifier the [Modifier] to be applied to the text field
- * @param values list of enum values
+ * @param values list of values
  * @param value currently selected value
  * @param onValueChange callback to be called when a value is selected
  * @param label label for the text field
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T : Enum<T>> ComboBoxDropdown(
+fun <T> ComboBoxDropdown(
     modifier: Modifier = Modifier,
     values: Array<T>,
     value: T,
     onValueChange: (T) -> Unit,
+    getValueName: (T) -> String = { it.toString() },
     label: (@Composable () -> Unit)? = null
 ) {
     var expanded by rememberMutable { false }
@@ -43,7 +44,7 @@ fun <T : Enum<T>> ComboBoxDropdown(
     ) {
         OutlinedTextField(
             modifier = modifier.menuAnchor(),
-            value = value.name,
+            value = getValueName(value),
             onValueChange = {},
             singleLine = true,
             label = label,
@@ -68,7 +69,7 @@ fun <T : Enum<T>> ComboBoxDropdown(
         ) {
             values.forEach {
                 DropdownMenuItem(
-                    text = { Text(it.name) },
+                    text = { Text(getValueName(it)) },
                     onClick = {
                         expanded = false
                         onValueChange(it)
@@ -79,17 +80,15 @@ fun <T : Enum<T>> ComboBoxDropdown(
     }
 }
 
-private enum class ExampleEnum {
-    FIRST
-}
-
 @Preview(showBackground = true)
 @Composable
 private fun ComboBoxDropdownPreview() {
-    var value by rememberMutable { ExampleEnum.FIRST }
+    val values = arrayOf("A", "B", "C")
+
+    var value by rememberMutable { values.first() }
 
     ComboBoxDropdown(
-        values = ExampleEnum.entries.toTypedArray(),
+        values = values,
         value = value,
         onValueChange = { value = it },
         label = { Text("Example dropdown") }

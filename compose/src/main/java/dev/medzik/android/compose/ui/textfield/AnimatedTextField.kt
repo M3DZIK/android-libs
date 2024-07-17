@@ -81,7 +81,7 @@ fun AnimatedTextField(
 ) {
     val isError = value.error != null
 
-    var hasFocus by rememberMutable(false)
+    var hasFocus by rememberMutable { false }
 
     AnimatedTextFieldSurface(
         modifier = modifier.onFocusChanged {
@@ -276,7 +276,7 @@ private fun AnimatedTextFieldSurface(
 @Preview
 @Composable
 private fun AnimatedTextFieldPreview() {
-    val valueState = rememberMutable("")
+    val valueState = rememberMutable { "" }
 
     val value = TextFieldValue.fromMutableState(
         state = valueState,
@@ -284,7 +284,7 @@ private fun AnimatedTextFieldPreview() {
         error = if (valueState.value.length > 5) "Too long" else null
     )
 
-    var visibility by rememberMutable(false)
+    var visibility by rememberMutable { false }
 
     MaterialTheme {
         Column(

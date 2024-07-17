@@ -43,7 +43,7 @@ fun MaskedAnimatedTextField(
     trailing: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null
 ) {
-    var visibility by rememberMutable(false)
+    var visibility by rememberMutable { false }
 
     AnimatedTextField(
         modifier = modifier,

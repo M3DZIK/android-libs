@@ -60,7 +60,7 @@ fun PropertyPreference(
 @Composable
 private fun PropertyPreferencePreview() {
     val propertyItems = listOf("First", "Second", "Third")
-    var currentItem by rememberMutable(propertyItems[0])
+    var currentItem by rememberMutable { propertyItems[0] }
     val state = rememberDialogState()
 
     Column {

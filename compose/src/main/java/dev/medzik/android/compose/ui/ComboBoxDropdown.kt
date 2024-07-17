@@ -35,7 +35,7 @@ fun <T : Enum<T>> ComboBoxDropdown(
     onValueChange: (T) -> Unit,
     label: (@Composable () -> Unit)? = null
 ) {
-    var expanded by rememberMutable(false)
+    var expanded by rememberMutable { false }
 
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -86,7 +86,7 @@ private enum class ExampleEnum {
 @Preview(showBackground = true)
 @Composable
 private fun ComboBoxDropdownPreview() {
-    var value by rememberMutable(ExampleEnum.FIRST)
+    var value by rememberMutable { ExampleEnum.FIRST }
 
     ComboBoxDropdown(
         values = ExampleEnum.entries.toTypedArray(),

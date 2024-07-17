@@ -29,13 +29,15 @@ fun Permission(
     onDenied: @Composable (requestPermission: @Composable () -> Unit) -> Unit,
     onGranted: @Composable () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     // check the initial state of permission, it may be already granted
-    var grantState by rememberMutable(
+    var grantState by rememberMutable {
         ContextCompat.checkSelfPermission(
-            LocalContext.current,
+            context,
             permission
         ) == PackageManager.PERMISSION_GRANTED
-    )
+    }
 
     if (grantState) {
         onGranted()

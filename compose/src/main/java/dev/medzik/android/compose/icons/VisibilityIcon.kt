@@ -41,7 +41,7 @@ fun VisibilityIcon(
 @Preview
 @Composable
 private fun VisibilityIconPreview() {
-    var visibility by rememberMutable(false)
+    var visibility by rememberMutable { false }
 
     VisibilityIcon(
         modifier = Modifier.clickable {

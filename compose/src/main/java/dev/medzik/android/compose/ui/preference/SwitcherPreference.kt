@@ -82,7 +82,7 @@ fun SwitcherPreference(
 @Preview(showBackground = true)
 @Composable
 private fun SwitcherPreferencePreview() {
-    val checked = rememberMutable(false)
+    val checked = rememberMutable { false }
 
     Column {
         SwitcherPreference(

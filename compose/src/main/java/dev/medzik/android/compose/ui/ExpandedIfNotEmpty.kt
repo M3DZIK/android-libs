@@ -31,7 +31,7 @@ fun <T> ExpandedIfNotEmpty(
         enter = enter,
         exit = exit,
     ) {
-        val rememberedValue by rememberMutable(value)
-        content(rememberedValue!!)
+        val rememberedValue by rememberMutable { value!! }
+        content(rememberedValue)
     }
 }

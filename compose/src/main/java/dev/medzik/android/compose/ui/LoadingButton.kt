@@ -57,7 +57,7 @@ fun LoadingButton(
     enabled: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    var loading by rememberMutable(false)
+    var loading by rememberMutable { false }
     val scope = rememberCoroutineScope()
 
     LoadingButton(
@@ -81,7 +81,7 @@ private fun LoadingButtonPreview() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var loading by rememberMutable(false)
+        var loading by rememberMutable { false }
 
         LoadingButton(
             loading = loading,

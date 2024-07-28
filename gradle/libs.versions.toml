@@ -13,7 +13,7 @@ kotlin = "2.0.0"
 kotlin-dokka = "1.9.20"
 kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.7.1"
-medzik-common-kotlin = "1.0.0"
+medzik-common-kotlin = "1.1.0"
 nexus-publish = "2.0.0"
 
 [libraries]

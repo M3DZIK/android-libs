@@ -12,7 +12,7 @@ compose-navigation = "2.7.7"
 kotlin = "2.0.10"
 kotlin-dokka = "1.9.20"
 kotlinx-coroutines = "1.8.1"
-kotlinx-serialization = "1.7.1"
+kotlinx-serialization = "1.7.3"
 medzik-common-kotlin = "1.1.0"
 nexus-publish = "2.0.0"
 
